@@ -11,20 +11,6 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
         ws: false,
-        configure: (proxy, _options) => {
-          proxy.on('error', (err, _req, res) => {
-            console.log('Proxy error:', err)
-            if (res && !res.headersSent) {
-              res.writeHead(502, {
-                'Content-Type': 'application/json',
-              })
-              res.end(JSON.stringify({
-                success: false,
-                message: 'Backend server is not running. Please start it with: npm run start',
-              }))
-            }
-          })
-        },
       },
     },
   },
