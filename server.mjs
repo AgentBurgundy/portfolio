@@ -1,4 +1,12 @@
-import 'dotenv/config'
+// Load .env locally if available (safe in production).
+// In production builds (e.g. Docker runner stage) we don't ship node_modules,
+// so this must not hard-fail.
+try {
+  await import('dotenv/config')
+} catch {
+  // no-op
+}
+
 import http from 'node:http'
 import { readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
