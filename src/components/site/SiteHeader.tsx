@@ -1,15 +1,16 @@
-import { NavLink } from 'react-router-dom'
-import clsx from 'clsx'
-import { profile } from '../../content/profile'
+import { NavLink } from "react-router-dom";
+import clsx from "clsx";
+import { profile } from "../../content/profile";
 
 const links: Array<{ to: string; label: string }> = [
-  { to: '/', label: 'Home' },
-  { to: '/about', label: 'About' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/experience', label: 'XP' },
-  { to: '/arcade', label: 'Arcade' },
-  { to: '/contact', label: 'Contact' },
-]
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/projects", label: "Projects" },
+  { to: "/experience", label: "XP" },
+  { to: "/resume", label: "Resume" },
+  { to: "/arcade", label: "Arcade" },
+  { to: "/contact", label: "Contact" },
+];
 
 export function SiteHeader() {
   return (
@@ -22,8 +23,12 @@ export function SiteHeader() {
             </span>
           </div>
           <div className="leading-tight">
-            <div className="font-pixel text-[10px] text-white/90">{profile.name.toUpperCase()}</div>
-            <div className="font-mono text-sm text-white/60">{profile.role.toLowerCase()}</div>
+            <div className="font-pixel text-[10px] text-white/90">
+              {profile.name.toUpperCase()}
+            </div>
+            <div className="font-mono text-sm text-white/60">
+              {profile.role.toLowerCase()}
+            </div>
           </div>
         </NavLink>
 
@@ -34,9 +39,9 @@ export function SiteHeader() {
               to={l.to}
               className={({ isActive }) =>
                 clsx(
-                  'pixel-corners px-3 py-2 text-sm transition',
-                  'hover:bg-white/5 hover:text-white',
-                  isActive ? 'bg-white/6 text-white' : 'text-white/70',
+                  "pixel-corners px-3 py-2 text-sm transition",
+                  "hover:bg-white/5 hover:text-white",
+                  isActive ? "bg-white/6 text-white" : "text-white/70",
                 )
               }
             >
@@ -46,6 +51,5 @@ export function SiteHeader() {
         </nav>
       </div>
     </header>
-  )
+  );
 }
-
