@@ -3,7 +3,16 @@
     "allow": [
       "mcp__acp__Bash",
       "mcp__acp__Edit",
-      "mcp__acp__Write"
+      "mcp__acp__Write",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite:*)",
+      "Bash(xxd src/content/profile.ts)",
+      "Bash(xxd)",
+      "Bash(for url:*)",
+      "Bash(do echo:*)",
+      "Bash(curl -sI $url)",
+      "Bash(done)"
     ]
   }
 }

@@ -1,185 +1,122 @@
-import { useEffect, useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import clsx from 'clsx'
+import { useRef, useState, type MouseEvent } from 'react'
+import { motion, useInView } from 'framer-motion'
 import { profile } from '../content/profile'
 import { WebsitePreview } from '../components/projects/WebsitePreview'
 
 export function ProjectsPage() {
   const projects = profile.featuredProjects
-  const [searchParams, setSearchParams] = useSearchParams()
-
-  const ids = useMemo(() => projects.map((p) => projectId(p.url, p.name)), [projects])
-  const selectedFromQuery = (searchParams.get('p') || '').trim()
-
-  const [selectedId, setSelectedId] = useState<string>(() => {
-    if (selectedFromQuery && ids.includes(selectedFromQuery)) return selectedFromQuery
-    return ids[0] ?? 'default'
-  })
-
-  useEffect(() => {
-    if (!selectedFromQuery) return
-    if (selectedFromQuery !== selectedId && ids.includes(selectedFromQuery)) {
-      setSelectedId(selectedFromQuery)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFromQuery, ids.join('|')])
-
-  const selected = useMemo(() => {
-    const idx = ids.indexOf(selectedId)
-    return idx >= 0 ? projects[idx] : projects[0]
-  }, [ids, projects, selectedId])
-
-  const selectedRepoUrl = (selected as unknown as { repoUrl?: string }).repoUrl
 
   return (
-    <div className="space-y-8">
-      <header className="relative overflow-hidden pixel-border pixel-corners bg-white/[0.03] p-6">
-        <div className="absolute inset-0 bg-gradient-to-br from-neon-violet/18 via-transparent to-neon-cyan/14 opacity-70" />
-        <div className="relative">
-          <h1 className="font-pixel text-[14px] text-white">Projects</h1>
-          <p className="mt-3 max-w-3xl text-white/70">
-            Real shipped work. Web + mobile. Customer-facing UX. Greenfield builds. Click through to the
-            live product pages and repos.
-          </p>
+    <div className="pb-16 pt-4">
+      <motion.header
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-3xl font-bold text-white">Projects</h1>
+        <p className="mt-2 max-w-lg text-sm text-white/40">
+          A selection of products I{"'"}ve built and shipped.
+          Each one owned end-to-end -- architecture, UI, deployment.
+        </p>
+      </motion.header>
 
-          <div className="mt-5 flex flex-wrap gap-2">
-            <Chip>Customer-facing</Chip>
-            <Chip>0→1</Chip>
-            <Chip>React</Chip>
-            <Chip>TypeScript</Chip>
-            <Chip>Node</Chip>
-            <Chip>React Native</Chip>
-          </div>
-        </div>
-      </header>
-
-      <section className="grid gap-4 lg:[grid-template-columns:340px_1fr]">
-        {/* Sidebar */}
-        <aside className="pixel-border pixel-corners bg-white/[0.03] p-4">
-          <div className="flex items-center justify-between gap-3 px-2 py-2">
-            <div className="font-pixel text-[11px] text-white/85">Select a project</div>
-            <span className="font-mono text-sm text-white/45">click to load</span>
-          </div>
-
-          <div className="mt-2 grid gap-2">
-            {projects.map((p, i) => {
-              const id = ids[i]
-              const isActive = id === selectedId
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => {
-                    setSelectedId(id)
-                    const next = new URLSearchParams(searchParams)
-                    next.set('p', id)
-                    setSearchParams(next, { replace: true })
-                  }}
-                  className={clsx(
-                    'group w-full overflow-hidden text-left pixel-border pixel-corners p-3 transition',
-                    isActive
-                      ? 'bg-white/[0.06] ring-1 ring-neon-cyan/40'
-                      : 'bg-space-900/20 hover:bg-white/[0.04]',
-                  )}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="h-12 w-12 overflow-hidden rounded-lg border border-white/10 bg-space-950/50">
-                      <img
-                        src={p.previewImage}
-                        alt=""
-                        className="h-full w-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-baseline justify-between gap-2">
-                        <div className="truncate font-pixel text-[11px] text-white/90">{p.name}</div>
-                        <div className="shrink-0 font-mono text-xs text-neon-cyan/80">{p.kind}</div>
-                      </div>
-                      <div className="mt-1 line-clamp-2 text-sm text-white/65">{p.tagline}</div>
-                    </div>
-                  </div>
-                </button>
-              )
-            })}
-          </div>
-        </aside>
-
-        {/* Detail */}
-        <div className="pixel-border pixel-corners bg-white/[0.03] p-6">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div className="min-w-0">
-              <div className="font-mono text-sm text-white/55">PROJECT</div>
-              <h2 className="mt-2 font-pixel text-[14px] text-white/90">{selected.name}</h2>
-              <p className="mt-2 text-white/70">{selected.tagline}</p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <a
-                href={selected.url}
-                target="_blank"
-                rel="noreferrer"
-                className="pixel-border pixel-corners inline-flex items-center justify-center px-4 py-3 text-sm text-white/85 transition hover:bg-white/5 hover:text-white"
-              >
-                Open ↗
-              </a>
-              {selectedRepoUrl ? (
-                <a
-                  href={selectedRepoUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="pixel-border pixel-corners inline-flex items-center justify-center px-4 py-3 text-sm text-white/75 transition hover:bg-white/5 hover:text-white"
-                >
-                  Repo ↗
-                </a>
-              ) : null}
-            </div>
-          </div>
-
-          <div className="mt-5">
-            <WebsitePreview
-              url={selected.url}
-              previewSrc={selected.previewImage}
-              heightClassName="h-64 sm:h-80"
-              className="shadow-glow/30"
-            />
-          </div>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-12">
-            <div className="md:col-span-7">
-              <div className="font-mono text-sm text-white/55">NOTES</div>
-              <p className="mt-2 text-white/70">{selected.note}</p>
-            </div>
-            <div className="md:col-span-5">
-              <div className="font-mono text-sm text-white/55">STACK</div>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {selected.stack.map((s) => (
-                  <Chip key={`${selected.name}-${s}`}>{s}</Chip>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        {projects.map((p, i) => (
+          <ProjectCard key={p.name} project={p} index={i} />
+        ))}
+      </div>
     </div>
   )
 }
 
-function Chip({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="pixel-border pixel-corners bg-space-900/40 px-2 py-1 font-mono text-sm text-white/70">
-      {children}
-    </span>
-  )
-}
+type Project = (typeof profile.featuredProjects)[number]
 
-function projectId(url: string, name: string) {
-  // stable-ish, URL driven where possible
-  try {
-    const u = new URL(url)
-    const host = u.hostname.replace(/^www\./, '')
-    return host.replace(/[^a-z0-9]+/gi, '-').toLowerCase()
-  } catch {
-    return name.replace(/[^a-z0-9]+/gi, '-').toLowerCase()
+function ProjectCard({ project: p, index }: { project: Project; index: number }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-40px' })
+  const [glowPos, setGlowPos] = useState({ x: 0, y: 0 })
+  const repoUrl = (p as unknown as { repoUrl?: string }).repoUrl
+
+  function handleMouse(e: MouseEvent) {
+    const rect = ref.current?.getBoundingClientRect()
+    if (!rect) return
+    setGlowPos({ x: e.clientX - rect.left, y: e.clientY - rect.top })
   }
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+      onMouseMove={handleMouse}
+      className="group relative flex flex-col overflow-hidden rounded-2xl bg-white/[0.02] ring-1 ring-white/[0.06] transition-all duration-500 hover:bg-white/[0.04] hover:ring-white/[0.14] hover:shadow-[0_0_60px_-12px_rgba(0,200,255,0.12)]"
+    >
+      {/* cursor glow */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(400px at ${glowPos.x}px ${glowPos.y}px, rgba(0,200,255,0.06), transparent 60%)`,
+        }}
+      />
+
+      {/* preview on top */}
+      <a href={p.url} target="_blank" rel="noreferrer" className="relative block overflow-hidden">
+        <div className="transition-transform duration-700 group-hover:scale-[1.04]">
+          <WebsitePreview url={p.url} previewSrc={p.previewImage} heightClassName="h-52" />
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#00c8ff] via-[#7c3aed] to-[#ff3278] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      </a>
+
+      {/* info below */}
+      <div className="relative flex flex-1 flex-col p-5">
+        <div className="flex items-center justify-between gap-2">
+          <h2 className="font-semibold text-white/90">{p.name}</h2>
+          <span className="shrink-0 rounded-full bg-white/[0.06] px-2.5 py-0.5 text-[10px] font-medium text-white/30">
+            {p.kind}
+          </span>
+        </div>
+
+        <p className="mt-1.5 text-sm text-white/35">{p.tagline}</p>
+
+        <p className="mt-3 flex-1 text-[13px] leading-relaxed text-white/25">
+          {p.note}
+        </p>
+
+        {/* stack */}
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {p.stack.map((s) => (
+            <span
+              key={s}
+              className="rounded-md bg-white/[0.04] px-2 py-0.5 text-[10px] text-white/25"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+
+        {/* links */}
+        <div className="mt-4 flex gap-3 text-xs">
+          <a
+            href={p.url}
+            target="_blank"
+            rel="noreferrer"
+            className="text-white/25 transition hover:text-[#00c8ff]"
+          >
+            Live {'\u2197'}
+          </a>
+          {repoUrl && (
+            <a
+              href={repoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-white/25 transition hover:text-[#00c8ff]"
+            >
+              Source {'\u2197'}
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  )
 }

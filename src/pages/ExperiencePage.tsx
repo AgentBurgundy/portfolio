@@ -1,191 +1,141 @@
-import { resumeData } from "../content/profile";
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { resumeData } from '../content/profile'
 
-const accents = ["pink", "cyan", "violet", "amber"] as const;
-const accentGradients: Record<string, string> = {
-  pink: "from-neon-pink/20",
-  cyan: "from-neon-cyan/20",
-  violet: "from-neon-violet/20",
-  amber: "from-neon-amber/20",
-};
-const accentDots: Record<string, string> = {
-  pink: "bg-neon-pink/60",
-  cyan: "bg-neon-cyan/60",
-  violet: "bg-neon-violet/60",
-  amber: "bg-neon-amber/60",
-};
+const ease = [0.22, 1, 0.36, 1] as const
+
+function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-40px' })
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay, ease }}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 export function ExperiencePage() {
   return (
-    <div className="space-y-8">
-      {/* HEADER + SUMMARY */}
-      <header className="relative overflow-hidden pixel-border pixel-corners bg-white/[0.03] p-6">
-        <div className="absolute inset-0 bg-gradient-to-br from-neon-pink/14 via-transparent to-neon-violet/18 opacity-70" />
-        <div className="relative">
-          <h1 className="font-pixel text-[14px] text-white">Experience</h1>
-          <p className="mt-3 max-w-4xl text-white/70 leading-relaxed">
-            {resumeData.summary}
-          </p>
-        </div>
-      </header>
+    <div className="pb-16 pt-4">
+      {/* header */}
+      <motion.header
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-3xl font-bold text-white">Experience</h1>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/40">
+          {resumeData.summary}
+        </p>
+      </motion.header>
 
-      {/* FEATURED SHIPMENTS */}
-      <section className="space-y-4">
-        <div className="flex items-end gap-4">
-          <div>
-            <div className="font-mono text-sm text-white/55">
-              FEATURED SHIPMENTS
-            </div>
-            <h2 className="mt-2 font-pixel text-[13px] text-white/90">
-              Products I've conceived, designed, and shipped
-            </h2>
+      {/* work history */}
+      <Reveal>
+        <section className="mt-16">
+          <SectionLabel>Work history</SectionLabel>
+
+          <div className="mt-8 space-y-0">
+            {resumeData.experience.map((job, i) => (
+              <Reveal key={job.company} delay={i * 0.05}>
+                <div className="group relative grid gap-4 border-l border-white/[0.06] py-8 pl-8 transition hover:border-white/[0.12] sm:grid-cols-[200px_1fr]">
+                  {/* timeline dot */}
+                  <div className="absolute -left-[5px] top-10 h-[9px] w-[9px] rounded-full border-2 border-[#0a0a1a] bg-white/30 transition group-hover:bg-[#00c8ff] group-hover:shadow-[0_0_12px_rgba(0,200,255,0.4)]" />
+
+                  {/* left — dates */}
+                  <div className="text-sm">
+                    <div className="text-white/25">{job.when}</div>
+                    <div className="mt-0.5 text-white/15">{job.location}</div>
+                  </div>
+
+                  {/* right — details */}
+                  <div>
+                    <h3 className="text-base font-semibold text-white/90">{job.title}</h3>
+                    <div className="mt-0.5 text-sm text-[#00c8ff]/50">{job.company}</div>
+                    <ul className="mt-4 space-y-2.5">
+                      {job.bullets.map((b) => (
+                        <li key={b} className="flex gap-2.5 text-[13px] leading-relaxed text-white/35">
+                          <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-white/20" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
-          <div className="hidden h-px flex-1 bg-gradient-to-r from-white/10 via-neon-pink/30 to-transparent md:block" />
-        </div>
+        </section>
+      </Reveal>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          {resumeData.featuredShipments.map((ship, i) => {
-            const accent = accents[i % accents.length];
-            return (
-              <div
-                key={ship.name}
-                className="group relative overflow-hidden pixel-border pixel-corners bg-white/[0.03] p-6 transition hover:bg-white/[0.05]"
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${accentGradients[accent]} via-transparent to-transparent opacity-50`}
-                />
-                <div className="relative">
+      {/* featured products */}
+      <Reveal>
+        <section className="mt-20">
+          <SectionLabel>Products shipped</SectionLabel>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {resumeData.featuredShipments.map((ship, i) => (
+              <Reveal key={ship.name} delay={i * 0.05}>
+                <div className="group rounded-2xl bg-white/[0.02] p-6 ring-1 ring-white/[0.06] transition-all hover:bg-white/[0.04] hover:ring-white/[0.12]">
                   <div className="flex items-baseline justify-between gap-3">
-                    <div className="font-pixel text-[12px] text-white/90">
-                      {ship.name}
-                    </div>
-                    <div className="font-mono text-xs text-white/50">
-                      {ship.role}
-                    </div>
+                    <h3 className="font-semibold text-white/90">{ship.name}</h3>
+                    <span className="shrink-0 text-xs text-white/20">{ship.role}</span>
                   </div>
-                  <div className="mt-2 font-mono text-sm text-neon-cyan/80">
-                    {ship.mission}
-                  </div>
+                  <p className="mt-1.5 text-sm text-[#00c8ff]/40">{ship.mission}</p>
                   <ul className="mt-4 space-y-2">
                     {ship.bullets.map((b) => (
-                      <li key={b} className="flex gap-2 text-sm text-white/70">
-                        <span
-                          className={`mt-[7px] h-1.5 w-1.5 shrink-0 rounded-sm ${accentDots[accent]}`}
-                        />
+                      <li key={b} className="flex gap-2.5 text-[13px] leading-relaxed text-white/30">
+                        <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-white/15" />
                         <span>{b}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* PROFESSIONAL EXPERIENCE TIMELINE */}
-      <section className="space-y-4">
-        <div className="flex items-end gap-4">
-          <div>
-            <div className="font-mono text-sm text-white/55">WORK HISTORY</div>
-            <h2 className="mt-2 font-pixel text-[13px] text-white/90">
-              Professional Experience
-            </h2>
-          </div>
-          <div className="hidden h-px flex-1 bg-gradient-to-r from-white/10 via-neon-violet/30 to-transparent md:block" />
-        </div>
-
-        <div className="relative">
-          <div className="absolute left-3 top-0 h-full w-px bg-gradient-to-b from-neon-violet/50 via-white/10 to-transparent md:left-6" />
-          <div className="space-y-6">
-            {resumeData.experience.map((job) => (
-              <div
-                key={job.title + job.when}
-                className="relative pl-10 md:pl-16"
-              >
-                <div className="absolute left-[6px] top-3 h-3 w-3 rounded-full bg-neon-violet/70 shadow-[0_0_24px_rgba(167,139,250,0.35)] md:left-[18px]" />
-                <div className="pixel-border pixel-corners bg-white/[0.03] p-6">
-                  <div className="flex flex-wrap items-baseline justify-between gap-3">
-                    <div>
-                      <div className="font-pixel text-[12px] text-white/90">
-                        {job.title}
-                      </div>
-                      <div className="mt-2 font-mono text-sm text-white/60">
-                        {job.company} | {job.location}
-                      </div>
-                    </div>
-                    <div className="font-mono text-sm text-neon-violet/80">
-                      {job.when}
-                    </div>
-                  </div>
-                  <div className="mt-4 grid gap-3 md:grid-cols-2">
-                    <ul className="space-y-2 text-white/70">
-                      {job.bullets
-                        .slice(0, Math.ceil(job.bullets.length / 2))
-                        .map((b) => (
-                          <li key={b} className="flex gap-2">
-                            <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-sm bg-neon-violet/60" />
-                            <span>{b}</span>
-                          </li>
-                        ))}
-                    </ul>
-                    <ul className="space-y-2 text-white/70">
-                      {job.bullets
-                        .slice(Math.ceil(job.bullets.length / 2))
-                        .map((b) => (
-                          <li key={b} className="flex gap-2">
-                            <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-sm bg-neon-violet/60" />
-                            <span>{b}</span>
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </Reveal>
 
-      {/* TECHNICAL SKILLS */}
-      <section className="space-y-4">
-        <div className="flex items-end gap-4">
-          <div>
-            <div className="font-mono text-sm text-white/55">THE LOADOUT</div>
-            <h2 className="mt-2 font-pixel text-[13px] text-white/90">
-              Technical Skills
-            </h2>
-          </div>
-          <div className="hidden h-px flex-1 bg-gradient-to-r from-white/10 via-neon-cyan/30 to-transparent md:block" />
-        </div>
+      {/* skills */}
+      <Reveal>
+        <section className="mt-20">
+          <SectionLabel>Skills</SectionLabel>
 
-        <div className="pixel-border pixel-corners bg-white/[0.03] p-6">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {Object.entries(resumeData.skills).map(([category, items]) => (
-              <div
-                key={category}
-                className="pixel-border pixel-corners bg-space-900/40 p-4"
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <div className="font-pixel text-[10px] text-white/80">
-                    {category}
-                  </div>
-                  <div className="font-mono text-xs text-white/45">
-                    EQUIPPED
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {Object.entries(resumeData.skills).map(([category, items], i) => (
+              <Reveal key={category} delay={i * 0.04}>
+                <div className="rounded-2xl bg-white/[0.02] p-5 ring-1 ring-white/[0.06]">
+                  <h3 className="text-sm font-medium text-white/60">{category}</h3>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {items.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-lg bg-white/[0.04] px-2.5 py-1 text-xs text-white/30"
+                      >
+                        {item}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                <ul className="mt-3 space-y-1.5 text-sm text-white/70">
-                  {items.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-sm bg-neon-cyan/60" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </Reveal>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </Reveal>
     </div>
-  );
+  )
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-4">
+      <span className="text-sm font-medium text-white/50">{children}</span>
+      <div className="h-px flex-1 bg-white/[0.06]" />
+    </div>
+  )
 }

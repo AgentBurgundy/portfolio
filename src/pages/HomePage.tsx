@@ -1,333 +1,354 @@
 import { Link } from 'react-router-dom'
-import { Button } from '../components/ui/Button'
+import { motion, useInView } from 'framer-motion'
+import { useRef, useState, type MouseEvent as ReactMouse } from 'react'
 import { profile } from '../content/profile'
 import { WebsitePreview } from '../components/projects/WebsitePreview'
 
+/* ── animation ── */
+
+const ease = [0.22, 1, 0.36, 1] as const
+
+function Reveal({
+  children,
+  className = '',
+  delay = 0,
+}: {
+  children: React.ReactNode
+  className?: string
+  delay?: number
+}) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, delay, ease }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
+}
+
+/* ── page ── */
+
 export function HomePage() {
   return (
-    <div className="space-y-12">
-      {/* HERO */}
-      <section className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-10">
-        <div className="scanline crt absolute inset-0 opacity-60" />
-        <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gradient-to-br from-neon-cyan/20 via-neon-violet/10 to-transparent blur-2xl" />
-        <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-gradient-to-br from-neon-pink/18 via-neon-amber/10 to-transparent blur-2xl" />
+    <div className="pb-16">
+      <Hero />
+      <Reveal>
+        <Projects />
+      </Reveal>
+      <Reveal>
+        <Stack />
+      </Reveal>
+      <Reveal>
+        <CTA />
+      </Reveal>
+    </div>
+  )
+}
 
-        <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-7">
-            <p className="font-mono text-lg text-white/70">
-              <span className="text-neon-cyan">READY</span> Player One: product engineer
+/* ════════════════════════════════════════
+   HERO
+   ════════════════════════════════════════ */
+
+function Hero() {
+  return (
+    <section className="relative flex min-h-[90vh] flex-col justify-center py-20">
+      {/* static orb — no mouse tracking, no overflow clip */}
+      <div className="pointer-events-none fixed right-[-5vw] top-[5vh] hidden h-[600px] w-[600px] lg:block">
+        <div className="absolute inset-0 animate-[spin_25s_linear_infinite] rounded-full bg-gradient-conic from-[#00c8ff] via-[#7c3aed] via-50% to-[#ff3278] opacity-20 blur-[100px]" />
+        <div className="absolute inset-[15%] animate-[spin_18s_linear_infinite_reverse] rounded-full bg-gradient-conic from-[#ff3278] via-[#00c8ff] via-50% to-[#7c3aed] opacity-25 blur-[80px]" />
+        <div className="absolute inset-[30%] rounded-full bg-gradient-to-br from-[#00c8ff]/25 to-[#7c3aed]/25 blur-[60px]" />
+      </div>
+
+      {/* slow orbiting rings — fixed so no clipping */}
+      <div className="pointer-events-none fixed right-[2vw] top-[10vh] hidden lg:block">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+          className="h-[450px] w-[450px] rounded-full border border-white/[0.04]"
+        />
+      </div>
+      <div className="pointer-events-none fixed right-[6vw] top-[14vh] hidden lg:block">
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 55, repeat: Infinity, ease: 'linear' }}
+          className="h-[350px] w-[350px] rounded-full border border-dashed border-white/[0.03]"
+        />
+      </div>
+
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={stagger}
+        className="relative z-10 max-w-2xl"
+      >
+        {/* eyebrow */}
+        <motion.div variants={fadeUp} className="mb-8 flex items-center gap-3">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+          </span>
+          <span className="text-sm font-medium text-white/50">Available for new projects</span>
+        </motion.div>
+
+        {/* name */}
+        <motion.h1
+          variants={fadeUp}
+          className="text-[clamp(3.5rem,10vw,8rem)] font-extrabold leading-[0.9] tracking-tighter"
+        >
+          <span className="block text-white">Ronald</span>
+          <span className="block animate-gradient bg-gradient-to-r from-[#00c8ff] via-[#7c3aed] via-50% to-[#ff3278] bg-[length:200%_auto] bg-clip-text text-transparent">
+            Barnhart
+          </span>
+        </motion.h1>
+
+        {/* subtitle */}
+        <motion.p
+          variants={fadeUp}
+          className="mt-8 max-w-lg text-lg leading-relaxed text-white/50 sm:text-xl"
+        >
+          Software engineer & founder. I build and ship full-stack
+          products — AI, SaaS, games, mobile. From first commit to production.
+        </motion.p>
+
+        {/* actions */}
+        <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center gap-4">
+          <Link to="/projects" className="group relative rounded-full p-[1px]">
+            <div className="absolute inset-0 animate-gradient rounded-full bg-gradient-to-r from-[#00c8ff] via-[#7c3aed] to-[#ff3278] bg-[length:200%_auto] opacity-80 transition group-hover:opacity-100" />
+            <div className="relative rounded-full bg-[#0a0a1a] px-8 py-3.5 text-sm font-semibold text-white transition group-hover:bg-[#0a0a1a]/80">
+              View projects
+            </div>
+          </Link>
+          <Link
+            to="/contact"
+            className="rounded-full border border-white/15 px-8 py-3.5 text-sm font-medium text-white/70 transition hover:border-white/30 hover:text-white"
+          >
+            Contact me
+          </Link>
+        </motion.div>
+
+        {/* social links */}
+        <motion.div
+          variants={fadeUp}
+          className="mt-16 flex items-center gap-6 text-sm"
+        >
+          <a href={profile.links.github} target="_blank" rel="noreferrer" className="text-white/30 transition hover:text-white/70">GitHub</a>
+          <a href="https://linkedin.com/in/ronaldbarnhart" target="_blank" rel="noreferrer" className="text-white/30 transition hover:text-white/70">LinkedIn</a>
+          <a href="mailto:ronald@aibaker.io" className="text-white/30 transition hover:text-white/70">Email</a>
+          <a href={profile.links.resume} download className="text-white/30 transition hover:text-white/70">Resume</a>
+        </motion.div>
+      </motion.div>
+
+      {/* scroll hint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-2"
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em] text-white/20">Scroll</span>
+          <div className="h-8 w-[1px] bg-gradient-to-b from-white/20 to-transparent" />
+        </motion.div>
+      </motion.div>
+    </section>
+  )
+}
+
+/* ════════════════════════════════════════
+   PROJECTS
+   ════════════════════════════════════════ */
+
+function Projects() {
+  const items = profile.featuredProjects
+
+  return (
+    <section className="py-24">
+      <div className="flex items-end justify-between">
+        <div>
+          <span className="text-sm font-medium text-[#00c8ff]/60">Work</span>
+          <h2 className="mt-2 text-4xl font-bold text-white sm:text-5xl">
+            Selected projects
+          </h2>
+        </div>
+        <Link
+          to="/projects"
+          className="hidden text-sm text-white/30 transition hover:text-white/60 sm:block"
+        >
+          View all {'\u2192'}
+        </Link>
+      </div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-40px' }}
+        variants={stagger}
+        className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        {items.map((p) => (
+          <ProjectCard key={p.name} project={p} />
+        ))}
+      </motion.div>
+
+      <Link
+        to="/projects"
+        className="mt-8 block text-center text-sm text-white/30 transition hover:text-white/60 sm:hidden"
+      >
+        View all projects {'\u2192'}
+      </Link>
+    </section>
+  )
+}
+
+type Project = (typeof profile.featuredProjects)[number]
+
+function ProjectCard({ project: p }: { project: Project }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [glow, setGlow] = useState({ x: 0, y: 0 })
+
+  function onMove(e: ReactMouse) {
+    const r = ref.current?.getBoundingClientRect()
+    if (!r) return
+    setGlow({ x: e.clientX - r.left, y: e.clientY - r.top })
+  }
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={fadeUp}
+      onMouseMove={onMove}
+      className="group relative overflow-hidden rounded-2xl bg-white/[0.03] ring-1 ring-white/[0.06] transition-all duration-500 hover:bg-white/[0.05] hover:ring-white/[0.15] hover:shadow-[0_0_60px_-12px_rgba(0,200,255,0.15)]"
+    >
+      {/* cursor glow */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(500px at ${glow.x}px ${glow.y}px, rgba(0,200,255,0.08), rgba(124,58,237,0.04) 40%, transparent 70%)`,
+        }}
+      />
+
+      {/* preview */}
+      <a href={p.url} target="_blank" rel="noreferrer" className="relative block overflow-hidden">
+        <div className="transition-transform duration-700 group-hover:scale-[1.06]">
+          <WebsitePreview url={p.url} previewSrc={p.previewImage} heightClassName="h-52" />
+        </div>
+        {/* color bar at bottom of preview */}
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#00c8ff] via-[#7c3aed] to-[#ff3278] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      </a>
+
+      {/* info */}
+      <div className="relative p-5">
+        <div className="flex items-center justify-between">
+          <h3 className="font-semibold text-white/90">{p.name}</h3>
+          <span className="rounded-full bg-white/[0.06] px-2.5 py-0.5 text-[10px] font-medium text-white/30">
+            {p.kind}
+          </span>
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-white/35">{p.tagline}</p>
+        <a
+          href={p.url}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-4 inline-flex items-center gap-1 text-xs text-white/25 transition hover:text-[#00c8ff]"
+        >
+          View project {'\u2197'}
+        </a>
+      </div>
+    </motion.div>
+  )
+}
+
+/* ════════════════════════════════════════
+   STACK
+   ════════════════════════════════════════ */
+
+const tech = [
+  'TypeScript', 'React', 'Next.js', 'Node.js', 'PostgreSQL', 'Redis',
+  'React Native', 'Tailwind CSS', 'Docker', 'OpenAI', 'LangChain',
+  'Prisma', 'Vercel', 'GCP', 'Framer Motion', 'Figma',
+]
+
+function Stack() {
+  return (
+    <section className="py-24">
+      <span className="text-sm font-medium text-[#7c3aed]/60">Technologies</span>
+      <h2 className="mt-2 text-4xl font-bold text-white sm:text-5xl">Stack</h2>
+      <div className="mt-10 flex flex-wrap gap-3">
+        {tech.map((t, i) => (
+          <motion.span
+            key={t}
+            initial={{ opacity: 0, scale: 0.85 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.03, duration: 0.4, ease }}
+            className="rounded-xl border border-white/[0.06] bg-white/[0.03] px-5 py-2.5 text-sm text-white/50 transition-all hover:border-white/[0.2] hover:text-white/80 hover:shadow-[0_0_20px_-4px_rgba(0,200,255,0.15)]"
+          >
+            {t}
+          </motion.span>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+/* ════════════════════════════════════════
+   CTA
+   ════════════════════════════════════════ */
+
+function CTA() {
+  return (
+    <section className="py-24">
+      <div className="relative overflow-hidden rounded-3xl p-[1px]">
+        {/* animated gradient border */}
+        <div className="absolute inset-0 animate-gradient rounded-3xl bg-gradient-to-r from-[#00c8ff] via-[#7c3aed] to-[#ff3278] bg-[length:200%_auto] opacity-30" />
+
+        <div className="relative rounded-3xl bg-[#0a0a1a] px-8 py-16 sm:px-16">
+          {/* inner glows */}
+          <div className="pointer-events-none absolute -top-20 left-1/4 h-40 w-80 rounded-full bg-[#00c8ff]/10 blur-[80px]" />
+          <div className="pointer-events-none absolute -bottom-20 right-1/4 h-40 w-80 rounded-full bg-[#ff3278]/10 blur-[80px]" />
+
+          <div className="relative text-center">
+            <h2 className="text-4xl font-bold text-white sm:text-5xl">
+              Let{"'"}s build something.
+            </h2>
+            <p className="mx-auto mt-5 max-w-md text-lg text-white/40">
+              Looking for a technical co-founder, early engineer,
+              or someone who can own a product end-to-end.
             </p>
-
-            <h1 className="mt-4 font-pixel text-xl leading-relaxed text-white sm:text-3xl">
-              {profile.name}
-              <br />
-              <span className="text-white/70">I build customer-facing products people love using.</span>
-            </h1>
-
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70">
-              Full-stack TypeScript (React + Node). I’m strongest on greenfield 0→1 work: I move fast,
-              keep quality high, and sweat the UX details that make a product feel premium.
-            </p>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link to="/projects">
-                <Button>Mission select</Button>
-              </Link>
-              <Link to="/contact">
-                <Button variant="ghost">Open to work</Button>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Link to="/contact" className="group relative rounded-full p-[1px]">
+                <div className="absolute inset-0 animate-gradient rounded-full bg-gradient-to-r from-[#00c8ff] via-[#7c3aed] to-[#ff3278] bg-[length:200%_auto] opacity-80 transition group-hover:opacity-100" />
+                <div className="relative rounded-full bg-[#0a0a1a] px-8 py-3.5 text-sm font-semibold text-white transition group-hover:bg-transparent">
+                  Get in touch
+                </div>
               </Link>
               <a
                 href={profile.links.resume}
-                className="pixel-border pixel-corners inline-flex items-center justify-center gap-2 px-4 py-3 text-sm text-white/80 transition hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan/60 focus-visible:ring-offset-2 focus-visible:ring-offset-space-950"
                 download
+                className="rounded-full border border-white/15 px-8 py-3.5 text-sm text-white/50 transition hover:border-white/30 hover:text-white"
               >
-                Resume
+                Download resume
               </a>
-              <Link to="/arcade">
-                <Button variant="ghost">Arcade</Button>
-              </Link>
-            </div>
-
-            <div className="mt-10 grid gap-3 sm:grid-cols-3">
-              <Stat label="Focus" value="customer apps" hint="UX, polish, speed" />
-              <Stat label="Love" value="greenfield 0→1" hint="move fast, build right" />
-              <Stat label="Stack" value="TS / React" hint="Node, Postgres, cloud" />
             </div>
           </div>
-
-          <div className="lg:col-span-5">
-            <Terminal />
-          </div>
-        </div>
-      </section>
-
-      {/* MISSION SELECT */}
-      <section className="space-y-4">
-        <SectionTitle eyebrow="MISSION SELECT" title="What I ship best" />
-        <div className="grid gap-4 md:grid-cols-3">
-          <FeatureCard
-            k="01"
-            title="Customer UI"
-            body="Fast, readable interfaces with strong primitives and real product constraints."
-            accent="cyan"
-          />
-          <FeatureCard
-            k="02"
-            title="0→1 Foundations"
-            body="Greenfield architecture that stays flexible: routing, data, DX, tests, and CI."
-            accent="violet"
-          />
-          <FeatureCard
-            k="03"
-            title="Systems that hold"
-            body="Integrations, queues, failures, metrics—so your product keeps working at scale."
-            accent="pink"
-          />
-        </div>
-      </section>
-
-      {/* FEATURED PROJECTS TEASER */}
-      <section className="space-y-4">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <SectionTitle eyebrow="FEATURED" title="Projects with real-world vibes" />
-          <Link to="/projects" className="font-mono text-sm text-neon-cyan/90 hover:text-white">
-            View all →
-          </Link>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
-          <ProjectTeaser
-            title="Validate AI (vldt.ai)"
-            tag="Featured"
-            desc="AI-powered validation: design doc + competitor analysis + landing page flow. Built end-to-end."
-            href={profile.links.vldt}
-          />
-          <ProjectTeaser
-            title="Wellspring"
-            tag="Mobile"
-            desc="React Native app on iOS + Android. Calm UI, fast iteration, real users."
-            href={profile.links.wellspring}
-          />
-          <ProjectTeaser
-            title="practiceinterview.ai"
-            tag="AI + Voice"
-            desc="Mock interviews using real voice input (Whisper) + ChatGPT so practice feels real."
-            href={profile.links.practiceInterview}
-          />
-          <ProjectTeaser
-            title="stanly.io"
-            tag="Landing"
-            desc="Founder-style abandoned cart recovery. Customer-facing landing built to convert."
-            href={profile.links.stanly}
-          />
-          <ProjectTeaser
-            title="training.vericuda.com"
-            tag="Contract"
-            desc="E-learning platform for manufacturing employees. Practical UX, built to ship."
-            href="https://training.vericuda.com"
-          />
-          <ProjectTeaser
-            title="firesaas.dev"
-            tag="Open source"
-            desc="Framework for building Next.js + Firebase SaaS apps with clean defaults."
-            href={profile.links.firesaas}
-          />
-        </div>
-      </section>
-
-      {/* LOADOUT */}
-      <section className="space-y-4">
-        <SectionTitle eyebrow="LOADOUT" title="Tools I reach for" />
-        <div className="pixel-border pixel-corners bg-white/[0.03] p-6">
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <LoadoutSlot title="Frontend" items={['React', 'TypeScript', 'Routing', 'UI systems']} />
-            <LoadoutSlot title="Backend" items={['Node', 'Queues', 'APIs', 'Auth']} />
-            <LoadoutSlot title="Data" items={['Postgres', 'Prisma', 'Migrations', 'Caching']} />
-            <LoadoutSlot title="Ship" items={['Docker', 'CI/CD', 'Monitoring', 'Sane defaults']} />
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 via-transparent to-neon-violet/10" />
-        <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <div className="font-pixel text-[12px] text-white/90">NEXT QUEST</div>
-            <div className="mt-2 max-w-2xl text-white/70">
-              If you’re hiring for customer-facing product work or greenfield builds, I’m a strong
-              fit. I’ll ship quickly, keep quality high, and keep the product fun to use.
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Link to="/contact">
-              <Button>Contact</Button>
-            </Link>
-            <Link to="/projects">
-              <Button variant="ghost">Projects</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
-  )
-}
-
-function Stat({ label, value, hint }: { label: string; value: string; hint: string }) {
-  return (
-    <div className="pixel-border pixel-corners bg-space-900/40 p-4">
-      <div className="font-pixel text-[10px] text-white/70">{label}</div>
-      <div className="mt-2 text-lg font-semibold text-white">{value}</div>
-      <div className="mt-1 font-mono text-sm text-white/60">{hint}</div>
-    </div>
-  )
-}
-
-function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
-  return (
-    <div className="flex items-end justify-between gap-4">
-      <div>
-        <div className="font-mono text-sm text-white/55">{eyebrow}</div>
-        <h2 className="mt-2 font-pixel text-[13px] text-white/90">{title}</h2>
-      </div>
-      <div className="hidden h-px flex-1 bg-gradient-to-r from-white/10 via-neon-cyan/30 to-transparent md:block" />
-    </div>
-  )
-}
-
-function FeatureCard({
-  k,
-  title,
-  body,
-  accent,
-}: {
-  k: string
-  title: string
-  body: string
-  accent: 'cyan' | 'violet' | 'pink'
-}) {
-  const a =
-    accent === 'cyan'
-      ? 'from-neon-cyan/25'
-      : accent === 'violet'
-        ? 'from-neon-violet/25'
-        : 'from-neon-pink/25'
-  return (
-    <div className="group relative overflow-hidden pixel-border pixel-corners bg-white/[0.03] p-6 transition hover:bg-white/[0.05]">
-      <div className={`absolute inset-0 bg-gradient-to-br ${a} via-transparent to-transparent opacity-50`} />
-      <div className="relative">
-        <div className="flex items-baseline justify-between gap-3">
-          <div className="font-mono text-sm text-white/55">MISSION {k}</div>
-          <div className="h-2 w-2 rounded-full bg-white/25 group-hover:bg-white/45" />
-        </div>
-        <div className="mt-3 font-pixel text-[12px] text-white/90">{title}</div>
-        <div className="mt-3 text-white/70">{body}</div>
-      </div>
-    </div>
-  )
-}
-
-function Terminal() {
-  return (
-    <div className="relative overflow-hidden pixel-border pixel-corners bg-space-900/40 p-5">
-      <div className="scanline absolute inset-0 opacity-70" />
-      <div className="relative">
-        <div className="flex items-center justify-between">
-          <div className="font-mono text-sm text-white/60">/terminal</div>
-          <div className="flex gap-1">
-            <span className="h-2 w-2 rounded-full bg-white/20" />
-            <span className="h-2 w-2 rounded-full bg-white/20" />
-            <span className="h-2 w-2 rounded-full bg-white/20" />
-          </div>
-        </div>
-
-        <div className="mt-4 space-y-2 font-mono text-sm text-white/70">
-          <Line k="focus" v="customer-facing apps" />
-          <Line k="sweet" v="greenfield 0→1" />
-          <Line k="stack" v="react · ts · node · postgres · rn" />
-          <Line k="traits" v="fast · clean · reliable" />
-          <div className="pt-2 text-white/55">
-            <span className="text-neon-cyan">$</span> npm run build
-            <span className="ml-2 inline-block h-[14px] w-[10px] animate-pulse bg-white/60 align-middle" />
-          </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
-
-function Line({ k, v }: { k: string; v: string }) {
-  return (
-    <div className="flex gap-3">
-      <span className="w-16 text-white/45">{k}</span>
-      <span className="text-white/75">{v}</span>
-    </div>
-  )
-}
-
-function ProjectTeaser({
-  title,
-  tag,
-  desc,
-  href,
-}: {
-  title: string
-  tag: string
-  desc: string
-  href?: string
-}) {
-  const previewSrc = href ? getPreviewSrc(href) : undefined
-  return (
-    <div className="group h-full pixel-border pixel-corners bg-white/[0.03] p-6 transition hover:bg-white/[0.05] hover:shadow-glow flex flex-col">
-      {href ? (
-        <a href={href} target="_blank" rel="noreferrer" className="mb-4 block">
-          <WebsitePreview url={href} previewSrc={previewSrc} heightClassName="h-40" className="shadow-glow/20" />
-        </a>
-      ) : null}
-      <div className="flex items-baseline justify-between gap-3">
-        <div className="font-pixel text-[12px] text-white/90">{title}</div>
-        <div className="font-mono text-sm text-neon-cyan/80">{tag}</div>
-      </div>
-      <div className="mt-3 text-white/70">{desc}</div>
-      <div className="mt-5 h-px bg-gradient-to-r from-white/10 via-neon-cyan/20 to-transparent" />
-      <div className="mt-auto pt-4 font-mono text-sm text-white/55">
-        {href ? (
-          <a href={href} target="_blank" rel="noreferrer" className="hover:text-white">
-            Open ↗
-          </a>
-        ) : (
-          <span>Case study → (add link)</span>
-        )}
-      </div>
-    </div>
-  )
-}
-
-function normalizeUrl(u: string) {
-  return u.replace(/\/+$/, '')
-}
-
-function getPreviewSrc(url: string) {
-  const target = normalizeUrl(url)
-  return profile.featuredProjects.find((p) => normalizeUrl(p.url) === target)?.previewImage
-}
-
-function LoadoutSlot({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div className="pixel-border pixel-corners bg-space-900/40 p-4">
-      <div className="flex items-center justify-between gap-3">
-        <div className="font-pixel text-[10px] text-white/80">{title}</div>
-        <div className="font-mono text-xs text-white/45">EQUIPPED</div>
-      </div>
-      <ul className="mt-3 space-y-2 text-sm text-white/70">
-        {items.map((it) => (
-          <li key={it} className="flex gap-2">
-            <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-sm bg-neon-cyan/60" />
-            <span>{it}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-

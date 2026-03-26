@@ -5,7 +5,7 @@
 @layer base {
     :root {
         color-scheme: dark;
-        --bg: 5 6 15; /* space-950 */
+        --bg: 5 5 16;
         --fg: 237 245 255;
     }
 
@@ -20,6 +20,7 @@
         background: rgb(var(--bg));
         color: rgb(var(--fg));
         text-rendering: geometricPrecision;
+        -webkit-font-smoothing: antialiased;
     }
 
     ::selection {
@@ -33,11 +34,12 @@
 }
 
 @layer components {
+    /* keep legacy classes for other pages that still use them */
     .pixel-border {
-        border: 1px solid rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.10);
         box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.06),
-            0 0 0 1px rgba(0, 0, 0, 0.35);
+            inset 0 1px 0 rgba(255, 255, 255, 0.04),
+            0 0 0 1px rgba(0, 0, 0, 0.25);
     }
 
     .pixel-corners {
@@ -98,7 +100,6 @@
 
 /* Print styles for resume PDF download */
 @media print {
-    /* Hide everything except the print view */
     body {
         background: white !important;
         color: black !important;
@@ -107,20 +108,17 @@
         font-family: "Georgia", "Times New Roman", serif !important;
     }
 
-    /* Hide the entire app shell */
     header,
     footer,
     nav,
-    .print\\:hidden {
+    .print\:hidden {
         display: none !important;
     }
 
-    /* Show the print-only view */
-    .print\\:block {
+    .print\:block {
         display: block !important;
     }
 
-    /* Hide starfield, overlays, and decorative elements */
     canvas,
     .scanline,
     .crt,
@@ -130,14 +128,12 @@
         display: none !important;
     }
 
-    /* Reset dark backgrounds */
     [class*="bg-space"],
     [class*="min-h-screen"] {
         background: white !important;
         color: black !important;
     }
 
-    /* Resume print layout */
     .resume-print {
         max-width: 8.5in;
         margin: 0 auto;
