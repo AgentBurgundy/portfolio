@@ -20,7 +20,7 @@ export const site = {
     initials: "RB",
     title: "Founder, AI Baker",
     location: "Austin, TX",
-    // TODO: drop a real headshot at public/ronald.jpg (square, ~800px). Falls back to initials until then.
+    // Local copy of Ronald's LinkedIn photo; keep the full square composition.
     photo: "/ronald.jpg",
     phone: "(330) 814-4605",
     phoneHref: "tel:+13308144605",
@@ -122,6 +122,7 @@ export const site = {
       {
         name: "CrewOS",
         url: "https://crewos.site",
+        logo: "/apps/crewos.png",
         kicker: "A whole business backend, with AI doing the busywork",
         headline: "Lead to quote to schedule to invoice to payroll, in one system",
         body: "I built the entire operating system a service business runs on. Leads from ads, the website, and the phone land in one pipeline with what each one cost. Quotes go out by text and get signed on a phone. Jobs get scheduled and dispatched. Invoices go out from the field. Crews get paid from the same data. An AI assistant drafts replies, chases quiet leads, and answers questions about the numbers.",
@@ -136,6 +137,7 @@ export const site = {
       {
         name: "stanly.io",
         url: "https://stanly.io",
+        logo: "/apps/stanly.png",
         kicker: "AI handling customer conversations at scale",
         headline: "Thousands of customer emails a day, answered and closed by AI",
         body: "When a shopper walks away from an online store, Stanly's AI agents email them, answer objections, look up products and orders, issue a discount if it makes sense, and bring them back to checkout. Every reply is drafted, reviewed by a second AI pass for tone and accuracy, then sent. No human in the loop unless one is needed.",
@@ -197,7 +199,7 @@ export const site = {
   games: {
     heading: "I also ship games.",
     sub: "Mobile games are the hardest software to ship: app-store review, sixty frames a second, players who leave the second something feels off. Same discipline goes into the systems I build for your business.",
-    // TODO: drop each app's icon at public/games/<slug>.png (square, 512px). Cards show a styled initial until then.
+    // Official App Store icons, stored locally at public/games/<slug>.png (512px square).
     items: [
       {
         slug: "cloudhop",

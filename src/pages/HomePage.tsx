@@ -289,8 +289,19 @@ function CaseCard({ c }: { c: CaseStudy }) {
     <article className="card flex h-full flex-col overflow-hidden">
       <div className={clsx('relative overflow-hidden px-7 pb-6 pt-7', ember ? 'bg-ember text-white' : 'bg-ink text-white')}>
         <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
-        <div className="flex items-center justify-between">
-          <span className="font-display text-[26px] font-extrabold tracking-tight">{c.name}</span>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <img
+              src={c.logo}
+              alt=""
+              width={64}
+              height={64}
+              loading="lazy"
+              decoding="async"
+              className="h-14 w-14 shrink-0 rounded-2xl bg-white object-contain shadow-card sm:h-16 sm:w-16"
+            />
+            <span className="font-display text-[26px] font-extrabold tracking-tight">{c.name}</span>
+          </div>
           <a
             href={c.url}
             target="_blank"
@@ -470,15 +481,15 @@ function Avatar({ size }: { size: 'sm' | 'lg' }) {
     return failed ? (
       <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-ink text-[10px] font-bold text-white">{p.initials}</span>
     ) : (
-      <img src={p.photo} alt="" onError={() => setFailed(true)} className="h-7 w-7 shrink-0 rounded-full object-cover" />
+      <img src={p.photo} alt="" width={28} height={28} decoding="async" onError={() => setFailed(true)} className="h-7 w-7 shrink-0 rounded-full object-cover" />
     )
   }
   return failed ? (
-    <div className="grid aspect-[4/3] w-full place-items-center bg-gradient-to-br from-ink to-ink-soft">
+    <div className="grid aspect-square w-full place-items-center bg-gradient-to-br from-ink to-ink-soft">
       <span className="font-display text-[72px] font-extrabold text-white/90">{p.initials}</span>
     </div>
   ) : (
-    <img src={p.photo} alt={p.name} onError={() => setFailed(true)} className="aspect-[4/3] w-full object-cover" />
+    <img src={p.photo} alt={p.name} width={400} height={400} loading="lazy" decoding="async" onError={() => setFailed(true)} className="aspect-square w-full object-cover" />
   )
 }
 
@@ -546,7 +557,7 @@ function GameCard({ item }: { item: (typeof site.games.items)[number] }) {
     <>
       <div className={clsx('relative aspect-square w-full overflow-hidden rounded-[22px] bg-gradient-to-br shadow-card', hueClass[item.hue])}>
         {!failed ? (
-          <img src={`/games/${item.slug}.png`} alt="" onError={() => setFailed(true)} className="absolute inset-0 h-full w-full object-cover" />
+          <img src={`/games/${item.slug}.png`} alt="" width={512} height={512} loading="lazy" decoding="async" onError={() => setFailed(true)} className="absolute inset-0 h-full w-full object-cover" />
         ) : (
           <span className="absolute inset-0 grid place-items-center font-display text-[56px] font-extrabold text-white/90">
             {item.name.charAt(0)}
