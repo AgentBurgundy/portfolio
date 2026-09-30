@@ -1,58 +1,57 @@
-# Space Arcade Portfolio (React + TS)
+# aibaker.io
 
-A space/pixel-art portfolio with an animated starfield and a tiny arcade mini-game.
+Marketing site for AI Baker: AI missed-call recovery and booking for Austin contractors and local businesses. Single page, React + Vite + Tailwind, served by a tiny Node server on Railway.
+
+## Edit the copy
+
+Everything on the page (headline, offer, pricing, FAQ, contact details, games, case studies) lives in **`src/content/site.ts`**. Search that file for `TODO` to find the things that still need real values:
+
+- `cta.bookingUrl` — a Calendly / Cal.com / Google appointment link (currently scrolls to the form)
+- `offer.price` — the flat monthly rate (hidden until set)
+- `offer.guarantee` — optional
+- `person.photo` — drop a headshot at `public/ronald.jpg`
+- `proof.demoVideoUrl` — 60-second screen capture of the AI booking a job
+- `testimonials` — section is hidden while empty
+- `games.items[].url` / `blurb` and icons at `public/games/<slug>.png`
 
 ## Local dev
 
 ```bash
 npm install
-npm run dev
+npm run dev        # Vite on :5173 + API server on :3002 (Vite proxies /api)
 ```
 
-This starts both the frontend (Vite) and backend (API server) together:
-- **Frontend**: Runs on `http://localhost:5173` (or 5175)
-- **Backend API**: Runs on `http://localhost:3002`
-- The Vite dev server automatically proxies `/api` requests to the backend
-
-**Note:** Port 3002 is used for the backend because ports 3000-3001 may be in use. If you need to change it, update `PORT` in the `dev:server` script in `package.json` and the proxy target in `vite.config.ts`.
-
-## Production build
+## Production
 
 ```bash
 npm run build
-npm run start
+npm start          # node server.mjs — serves dist/ and /api/contact
 ```
 
-## Docker (Railway-friendly)
+Docker (what Railway runs):
 
 ```bash
-docker build -t portfolio .
-docker run --rm -p 3000:3000 -e PORT=3000 portfolio
+docker build -t aibaker .
+docker run --rm -p 3000:3000 -e PORT=3000 aibaker
 ```
 
-## Contact Form Setup
+## Contact form
 
-The contact form uses [Resend](https://resend.com) to send emails via a server-side API endpoint (to avoid CORS issues). To enable it:
+`POST /api/contact` relays to [Resend](https://resend.com). Environment variables:
 
-1. Create a `.env` file in the root directory:
-   ```bash
-   # Copy this template and fill in your values
-   RESEND_API_KEY=re_your_api_key_here
-   CONTACT_EMAIL=professional.burgundy@gmail.com
-   PORT=3002
-   ```
+| Var              | Purpose                                                         |
+| ---------------- | --------------------------------------------------------------- |
+| `RESEND_API_KEY` | Required for the form to send. Unset = form returns an error.   |
+| `CONTACT_EMAIL`  | Where leads land.                                               |
+| `RESEND_FROM`    | Verified sender, e.g. `aibaker.io <hello@aibaker.io>`.          |
+| `PORT`           | Defaults to 3000.                                               |
 
-2. Get your API key from [Resend](https://resend.com/api-keys)
+The form has a honeypot field; submissions that fill it are silently dropped.
 
-3. Update the `from` email in `server.mjs` (line ~60) with your verified domain (or use Resend's test domain `onboarding@resend.dev` for development)
+## Social preview
 
-**Note:** The `.env` file is automatically loaded by the server. Make sure it's in the root directory and contains `RESEND_API_KEY`.
+`public/og.png` is generated from `scripts/og.html`:
 
-**Development:** 
-- For local testing, run both `npm run dev` (Vite) and `npm run start` (server) in separate terminals
-- Vite will proxy `/api` requests to the server on port 3000
-
-**Production:**
-- Set `RESEND_API_KEY` and `CONTACT_EMAIL` as environment variables on your hosting platform (Railway, etc.)
-
-**Note:** The API endpoint is at `/api/contact` and proxies requests to Resend, keeping your API key secure on the server side.
+```bash
+node scripts/render-og.mjs
+```

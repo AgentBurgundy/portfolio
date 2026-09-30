@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; box-sizing: border-box; }
+      body { width: 1200px; height: 630px; background: #faf7f2; font-family: Inter, system-ui, sans-serif; color: #14171f; overflow: hidden; position: relative; }
+      .dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(20,23,31,0.09) 1.5px, transparent 1.5px); background-size: 26px 26px; -webkit-mask-image: radial-gradient(ellipse 70% 70% at 30% 20%, black, transparent); }
+      .glow { position: absolute; right: -120px; top: -160px; width: 620px; height: 620px; border-radius: 50%; background: rgba(228,87,46,0.14); filter: blur(120px); }
+      .wrap { position: relative; padding: 72px 80px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+      .brand { display: flex; align-items: center; gap: 14px; font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: 30px; }
+      .brand .mark { width: 48px; height: 48px; border-radius: 14px; background: #14171f; display: grid; place-items: center; }
+      .brand .tld { color: #8a8f9a; }
+      .eyebrow { color: #e4572e; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600; font-size: 20px; }
+      h1 { font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: 104px; line-height: 0.98; letter-spacing: -0.03em; margin-top: 18px; }
+      h1 span { color: #e4572e; }
+      p { margin-top: 26px; font-size: 27px; line-height: 1.4; color: #5c6270; max-width: 760px; }
+      .foot { display: flex; justify-content: space-between; align-items: center; font-size: 22px; font-weight: 600; color: #5c6270; }
+      .pill { background: #14171f; color: white; padding: 14px 26px; border-radius: 999px; font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <div class="dots"></div>
+    <div class="glow"></div>
+    <div class="wrap">
+      <div>
+        <div class="brand">
+          <span class="mark">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="#fff" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+              <path stroke="#e4572e" d="M15 3.5a6 6 0 0 1 5.5 5.5M15 7a2.5 2.5 0 0 1 2 2"/>
+            </svg>
+          </span>
+          aibaker<span class="tld">.io</span>
+        </div>
+        <div style="margin-top: 56px">
+          <div class="eyebrow">Austin, TX · AI for contractors and local businesses</div>
+          <h1>Missed calls become<br /><span>booked jobs.</span></h1>
+          <p>AI that answers, texts back, and books the job while you're on a roof. Built and run by one Austin engineer.</p>
+        </div>
+      </div>
+      <div class="foot">
+        <span>Ronald Barnhart · (330) 814-4605</span>
+        <span class="pill">Book a 20-min call</span>
+      </div>
+    </div>
+  </body>
+</html>

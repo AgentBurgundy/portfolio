@@ -4,61 +4,53 @@ export default {
   theme: {
     extend: {
       colors: {
-        space: {
-          950: '#05060f',
-          900: '#070a17',
-          850: '#0a1026',
+        paper: {
+          DEFAULT: '#faf7f2',
+          deep: '#f1ece3',
         },
-        neon: {
-          cyan: '#22d3ee',
-          pink: '#fb7185',
-          violet: '#a78bfa',
-          lime: '#a3e635',
-          amber: '#fbbf24',
+        ink: {
+          DEFAULT: '#14171f',
+          soft: '#2a2f3a',
+          muted: '#5c6270',
+          faint: '#8a8f9a',
+        },
+        line: '#e6e1d8',
+        ember: {
+          DEFAULT: '#e4572e',
+          deep: '#c4471f',
+          soft: '#fdebe4',
+        },
+        moss: {
+          DEFAULT: '#1f8a5b',
+          soft: '#e3f3ea',
         },
       },
       fontFamily: {
-        pixel: ['"Press Start 2P"', 'system-ui', 'sans-serif'],
-        ui: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['"SF Mono"', '"Fira Code"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        display: ['"Bricolage Grotesque"', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        pixel: '0 0 0 2px rgba(255,255,255,0.12), 0 0 0 6px rgba(34,211,238,0.12)',
-        glow: '0 0 24px rgba(34,211,238,0.25)',
-      },
-      backgroundImage: {
-        nebula:
-          'radial-gradient(1200px 600px at 20% 20%, rgba(167,139,250,0.18), transparent 60%), radial-gradient(900px 500px at 80% 30%, rgba(34,211,238,0.14), transparent 60%), radial-gradient(800px 520px at 60% 90%, rgba(251,113,133,0.12), transparent 60%)',
-        grid:
-          'linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)',
-        'gradient-conic':
-          'conic-gradient(var(--tw-gradient-stops))',
+        card: '0 1px 2px rgba(20,23,31,0.04), 0 8px 24px -12px rgba(20,23,31,0.12)',
+        lift: '0 2px 4px rgba(20,23,31,0.05), 0 24px 48px -16px rgba(20,23,31,0.22)',
+        phone: '0 40px 80px -24px rgba(20,23,31,0.45), 0 0 0 1px rgba(20,23,31,0.08)',
       },
       keyframes: {
-        floaty: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
+        pulseDot: {
+          '0%, 80%, 100%': { transform: 'scale(0.6)', opacity: '0.4' },
+          '40%': { transform: 'scale(1)', opacity: '1' },
         },
-        flicker: {
-          '0%, 100%': { opacity: '1' },
-          '40%': { opacity: '0.85' },
-          '55%': { opacity: '0.95' },
-          '70%': { opacity: '0.8' },
-        },
-        scan: {
-          '0%': { transform: 'translateY(-20%)' },
-          '100%': { transform: 'translateY(120%)' },
-        },
-        gradient: {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
+        ring: {
+          '0%, 100%': { transform: 'rotate(0deg)' },
+          '10%': { transform: 'rotate(-14deg)' },
+          '20%': { transform: 'rotate(12deg)' },
+          '30%': { transform: 'rotate(-10deg)' },
+          '40%': { transform: 'rotate(8deg)' },
+          '50%': { transform: 'rotate(0deg)' },
         },
       },
       animation: {
-        floaty: 'floaty 6s ease-in-out infinite',
-        flicker: 'flicker 2.8s ease-in-out infinite',
-        scan: 'scan 4.5s linear infinite',
-        gradient: 'gradient 4s ease infinite',
+        pulseDot: 'pulseDot 1.2s ease-in-out infinite',
+        ring: 'ring 1.6s ease-in-out infinite',
       },
     },
   },

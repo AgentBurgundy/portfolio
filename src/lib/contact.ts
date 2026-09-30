@@ -1,15 +1,15 @@
 /**
- * Contact form API utilities
- * 
- * This module handles sending contact form messages.
- * Currently configured to use Resend API, but can be easily adapted
- * to other services (Formspree, EmailJS, custom API, etc.)
+ * Contact form client: validation + POST to /api/contact (server.mjs relays to Resend).
  */
 
 export interface ContactFormData {
   name: string
+  business: string
+  phone: string
   email: string
   message: string
+  /** Honeypot. Real users never fill it; bots do. */
+  website: string
 }
 
 export interface ContactFormResponse {
@@ -17,94 +17,54 @@ export interface ContactFormResponse {
   message: string
 }
 
-/**
- * Validates contact form data
- */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const PHONE_DIGITS_MIN = 10
+
 export function validateContactForm(data: ContactFormData): { valid: boolean; errors: string[] } {
   const errors: string[] = []
 
-  if (!data.name.trim()) {
-    errors.push('Name is required')
+  if (!data.name.trim()) errors.push('Add your name so I know who to call back.')
+
+  const email = data.email.trim()
+  const phoneDigits = data.phone.replace(/\D/g, '')
+
+  if (!email && !phoneDigits) {
+    errors.push('Leave a phone number or an email so I can reach you.')
+  } else {
+    if (email && !EMAIL_RE.test(email)) errors.push("That email doesn't look right.")
+    if (phoneDigits && phoneDigits.length < PHONE_DIGITS_MIN) errors.push("That phone number looks short.")
   }
 
-  if (!data.email.trim()) {
-    errors.push('Email is required')
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    errors.push('Please enter a valid email address')
-  }
+  if (!data.message.trim()) errors.push('Tell me a little about what you need (one line is fine).')
 
-  if (!data.message.trim()) {
-    errors.push('Message is required')
-  } else if (data.message.trim().length < 10) {
-    errors.push('Message must be at least 10 characters')
-  }
-
-  return {
-    valid: errors.length === 0,
-    errors,
-  }
+  return { valid: errors.length === 0, errors }
 }
 
-/**
- * Sends a contact form message via the local API endpoint
- * 
- * The API endpoint proxies requests to Resend API to avoid CORS issues.
- * Set RESEND_API_KEY and CONTACT_EMAIL environment variables on the server.
- */
 export async function sendContactMessage(data: ContactFormData): Promise<ContactFormResponse> {
   try {
     const response = await fetch('/api/contact', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     })
 
+    const json = (await response.json().catch(() => null)) as { success?: boolean; message?: string } | null
+
     if (!response.ok) {
-      const errorJson = await response.json().catch(() => null)
-      const errorMessage =
-        errorJson?.message ||
-        errorJson?.error?.message ||
-        errorJson?.error ||
-        `HTTP ${response.status}`
-      throw new Error(errorMessage)
+      return {
+        success: false,
+        message: json?.message || `Something went wrong (HTTP ${response.status}). Call or text me instead.`,
+      }
     }
 
-    const result = await response.json()
-    return {
-      success: result.success ?? true,
-      message: result.message || 'Message sent successfully! I\'ll get back to you soon.',
-    }
+    return { success: json?.success ?? true, message: json?.message || 'Sent.' }
   } catch (error) {
     console.error('Failed to send contact message:', error)
-    
-    // Handle connection errors
-    if (error instanceof TypeError && (error.message.includes('fetch') || error.message.includes('Failed to fetch'))) {
-      if (import.meta.env.DEV) {
-        return {
-          success: false,
-          message: 'Cannot reach the contact API. Make sure `npm run dev` is running (it starts both client + server).',
-        }
-      }
-      return {
-        success: false,
-        message: 'Cannot connect to server. Please try again later or contact directly via email.',
-      }
-    }
-
-    // Handle HTTP errors
-    if (error instanceof Error && error.message.includes('HTTP')) {
-      return {
-        success: false,
-        message: error.message,
-      }
-    }
-
     return {
       success: false,
-      message: error instanceof Error ? error.message : 'Failed to send message. Please try again or email directly.',
+      message: import.meta.env.DEV
+        ? 'Cannot reach the contact API. Run `npm run dev` (it starts client + server).'
+        : "Couldn't send that. Call or text me instead and I'll get right back to you.",
     }
   }
 }
-
