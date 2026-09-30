@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 import clsx from 'clsx'
 import { site, type CaseStudy } from '../content/site'
-import { PhoneDemo } from '../components/demo/PhoneDemo'
+import { OpsFeed } from '../components/demo/OpsFeed'
 import { PhoneIcon } from '../components/site/SiteHeader'
 import { sendContactMessage, validateContactForm, type ContactFormData } from '../lib/contact'
 
@@ -58,6 +58,7 @@ export function HomePage() {
     <>
       <Hero />
       <Pain />
+      <Automate />
       <HowItWorks />
       <Proof />
       <Offer />
@@ -97,7 +98,7 @@ function Hero() {
 
           <motion.h1
             variants={item}
-            className="mt-5 font-display text-[clamp(2.75rem,8vw,5.25rem)] font-extrabold leading-[0.98] tracking-[-0.03em] text-ink"
+            className="mt-5 font-display text-[clamp(2.75rem,7.5vw,4.75rem)] font-extrabold leading-[0.98] tracking-[-0.03em] text-ink"
           >
             {site.hero.headline[0]}
             <br />
@@ -129,9 +130,9 @@ function Hero() {
           initial={reduce ? false : { opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.25, ease }}
-          className="relative mx-auto w-full max-w-[420px] lg:max-w-none"
+          className="relative mx-auto w-full pb-6 lg:pb-0"
         >
-          <PhoneDemo />
+          <OpsFeed />
         </motion.div>
       </div>
     </section>
@@ -165,6 +166,54 @@ function Pain() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ───────────────── what I automate ───────────────── */
+
+function Automate() {
+  const a = site.automate
+  return (
+    <section id="automate" className="scroll-mt-20">
+      <div className="container-x py-20 lg:py-28">
+        <Reveal>
+          <SectionHeading eyebrow="What I automate" title={a.heading} sub={a.sub} />
+        </Reveal>
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          {a.groups.map((group, gi) => {
+            const front = group.key === 'front'
+            return (
+              <Reveal key={group.key} delay={gi * 0.1}>
+                <div className="card h-full overflow-hidden">
+                  <div className={clsx('flex items-center justify-between px-7 py-5', front ? 'bg-moss-soft' : 'bg-ember-soft')}>
+                    <div>
+                      <h3 className="font-display text-[24px] font-bold leading-tight">{group.title}</h3>
+                      <p className={clsx('mt-0.5 text-[14px]', front ? 'text-moss' : 'text-ember-deep')}>{group.blurb}</p>
+                    </div>
+                    <span className={clsx('grid h-11 w-11 place-items-center rounded-2xl bg-white shadow-card', front ? 'text-moss' : 'text-ember')}>
+                      {front ? <PhoneIcon className="h-5 w-5" /> : <GearIcon />}
+                    </span>
+                  </div>
+                  <ul className="divide-y divide-line px-7">
+                    {group.items.map((it) => (
+                      <li key={it.title} className="flex gap-4 py-5">
+                        <span className={clsx('mt-[5px] grid h-5 w-5 shrink-0 place-items-center rounded-full', front ? 'bg-moss-soft text-moss' : 'bg-ember-soft text-ember')}>
+                          <CheckIcon />
+                        </span>
+                        <div>
+                          <div className="font-display text-[17px] font-bold leading-snug">{it.title}</div>
+                          <p className="mt-1 text-[14.5px] leading-relaxed text-ink-muted">{it.text}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            )
+          })}
         </div>
       </div>
     </section>
@@ -639,11 +688,11 @@ function Contact() {
             </div>
             <div className="mt-5">
               <Field
-                label="What's leaking right now?"
+                label="Where do the hours go?"
                 multiline
                 value={form.message}
                 onChange={set('message')}
-                placeholder="Missed calls after hours, quotes that go quiet, no-shows..."
+                placeholder="Quotes take all evening, invoices go out late, calls get missed, nobody chases follow-ups..."
                 disabled={busy}
                 error={errors.some((e) => e.includes('message'))}
               />
@@ -753,6 +802,14 @@ function PlusIcon() {
   return (
     <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" aria-hidden>
       <path d="M12 5v14M5 12h14" />
+    </svg>
+  )
+}
+function GearIcon() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
     </svg>
   )
 }

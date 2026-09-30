@@ -8,6 +8,7 @@ const legacyRedirects: Record<string, string> = {
   "/home": "/",
   "/about": "/#about",
   "/projects": "/#proof",
+  "/services": "/#automate",
   "/experience": "/#about",
   "/contact": "/#contact",
   "/resume": "/#about",

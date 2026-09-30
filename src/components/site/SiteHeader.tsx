@@ -6,6 +6,7 @@ import { site } from '../../content/site'
 import { Wordmark } from './Wordmark'
 
 const links = [
+  { href: '/#automate', label: 'What I automate' },
   { href: '/#how', label: 'How it works' },
   { href: '/#proof', label: 'Proof' },
   { href: '/#pricing', label: 'Pricing' },
