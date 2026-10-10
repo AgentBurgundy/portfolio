@@ -114,9 +114,9 @@ function Hero() {
               {site.cta.primary}
               <ArrowIcon />
             </a>
-            <a href={site.person.phoneHref} className="btn-secondary">
-              <PhoneIcon className="h-4 w-4" />
-              {site.person.phone}
+            <a href={`mailto:${site.person.email}`} className="btn-secondary">
+              <MailIcon className="h-4 w-4" />
+              Email Ronald
             </a>
           </motion.div>
 
@@ -440,10 +440,6 @@ function About() {
                 <div className="font-display text-[22px] font-bold">{p.name}</div>
                 <div className="text-[14px] text-ink-muted">{p.title} · {p.location}</div>
                 <div className="mt-5 flex flex-col gap-2.5">
-                  <a href={p.phoneHref} className="btn-secondary !min-h-[46px] justify-start gap-3 text-[14px]">
-                    <PhoneIcon className="h-4 w-4 text-ember" />
-                    {p.phone}
-                  </a>
                   <a href={`mailto:${p.email}`} className="btn-secondary !min-h-[46px] justify-start gap-3 text-[14px]">
                     <MailIcon className="h-4 w-4 text-ember" />
                     {p.email}
@@ -678,10 +674,6 @@ function Contact() {
             <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3rem)] font-bold leading-[1.05]">{site.contact.heading}</h2>
             <p className="mt-5 text-[16px] leading-relaxed text-white/65">{site.contact.sub}</p>
             <div className="mt-8 space-y-3">
-              <a href={site.person.phoneHref} className="flex items-center gap-3 text-[17px] font-semibold transition hover:text-ember">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-white/10"><PhoneIcon className="h-4 w-4" /></span>
-                {site.person.phone}
-              </a>
               <a href={`mailto:${site.person.email}`} className="flex items-center gap-3 text-[17px] font-semibold transition hover:text-ember">
                 <span className="grid h-10 w-10 place-items-center rounded-full bg-white/10"><MailIcon className="h-4 w-4" /></span>
                 {site.person.email}

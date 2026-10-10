@@ -13,8 +13,8 @@ export function NotFoundPage() {
         <Link to="/" className="btn-primary">
           Back to the home page
         </Link>
-        <a href={site.person.phoneHref} className="btn-secondary">
-          Call {site.person.phone}
+        <a href={`mailto:${site.person.email}`} className="btn-secondary">
+          Email Ronald
         </a>
       </div>
     </div>

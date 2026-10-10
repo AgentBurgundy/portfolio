@@ -17,11 +17,6 @@ export function SiteFooter() {
             <h3 className="font-sans text-[12px] font-semibold uppercase tracking-[0.14em] text-ink-faint">Talk to me</h3>
             <ul className="mt-4 space-y-2.5 text-[15px]">
               <li>
-                <a href={site.person.phoneHref} className="font-medium text-ink transition hover:text-ember">
-                  {site.person.phone}
-                </a>
-              </li>
-              <li>
                 <a href={`mailto:${site.person.email}`} className="font-medium text-ink transition hover:text-ember">
                   {site.person.email}
                 </a>

@@ -52,13 +52,6 @@ export function SiteHeader() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href={site.person.phoneHref}
-            className="hidden items-center gap-2 text-[14px] font-semibold text-ink transition hover:text-ember lg:inline-flex"
-          >
-            <PhoneIcon className="h-4 w-4" />
-            {site.person.phone}
-          </a>
           <a href={site.cta.bookingUrl} className="btn-primary !min-h-[44px] px-5 text-[14px]">
             {site.cta.primary}
           </a>
@@ -101,9 +94,8 @@ export function SiteHeader() {
               </a>
             ))}
             <div className="mt-3 flex flex-col gap-3 border-t border-line pt-4">
-              <a href={site.person.phoneHref} className="btn-secondary">
-                <PhoneIcon className="h-4 w-4" />
-                Call {site.person.phone}
+              <a href={`mailto:${site.person.email}`} className="btn-secondary">
+                Email Ronald
               </a>
               <a href={site.cta.bookingUrl} onClick={() => setOpen(false)} className="btn-primary">
                 {site.cta.primary}

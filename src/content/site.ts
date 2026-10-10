@@ -22,8 +22,6 @@ export const site = {
     location: "Austin, TX",
     // Local copy of Ronald's LinkedIn photo; keep the full square composition.
     photo: "/ronald.jpg",
-    phone: "(330) 814-4605",
-    phoneHref: "tel:+13308144605",
     email: "ronald@aibaker.io",
     linkedin: "https://linkedin.com/in/ronaldbarnhart",
   },
