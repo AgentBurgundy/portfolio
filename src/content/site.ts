@@ -255,7 +255,7 @@ export const site = {
 
   contact: {
     heading: "Book a 20-minute call",
-    sub: "Tell me a little about your business and where the hours go. I'll come back with a plan and a price. Or skip the form and just call or text.",
+    sub: "Tell me a little about your business and where the hours go. I'll come back with a plan and a price. Or skip the form and email me directly.",
     success: "Got it. I'll text or email you within one business day.",
   },
 
