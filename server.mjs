@@ -118,7 +118,7 @@ const server = http.createServer(async (req, res) => {
         console.warn("RESEND_API_KEY not set. Contact form will not send.");
         json(res, 500, {
           success: false,
-          message: "The form isn't wired up yet. Call or text me instead.",
+          message: "The form isn't wired up yet. Email me instead.",
         });
         return;
       }
@@ -172,7 +172,7 @@ const server = http.createServer(async (req, res) => {
           console.error("Resend API error:", resendResponse.status, errBody);
           json(res, 502, {
             success: false,
-            message: "Couldn't send that. Call or text me instead.",
+            message: "Couldn't send that. Email me instead.",
           });
           return;
         }
@@ -182,7 +182,7 @@ const server = http.createServer(async (req, res) => {
         console.error("Contact API error:", err);
         json(res, 500, {
           success: false,
-          message: "Couldn't send that. Call or text me instead.",
+          message: "Couldn't send that. Email me instead.",
         });
       }
       return;

@@ -53,7 +53,7 @@ export async function sendContactMessage(data: ContactFormData): Promise<Contact
     if (!response.ok) {
       return {
         success: false,
-        message: json?.message || `Something went wrong (HTTP ${response.status}). Call or text me instead.`,
+        message: json?.message || `Something went wrong (HTTP ${response.status}). Email me instead.`,
       }
     }
 
@@ -64,7 +64,7 @@ export async function sendContactMessage(data: ContactFormData): Promise<Contact
       success: false,
       message: import.meta.env.DEV
         ? 'Cannot reach the contact API. Run `npm run dev` (it starts client + server).'
-        : "Couldn't send that. Call or text me instead and I'll get right back to you.",
+        : "Couldn't send that. Email me instead and I'll get right back to you.",
     }
   }
 }
