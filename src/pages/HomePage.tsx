@@ -271,7 +271,7 @@ function Proof() {
           </Reveal>
         )}
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div className="mt-12 grid gap-6">
           {site.proof.cases.map((c, i) => (
             <Reveal key={c.name} delay={i * 0.1}>
               <CaseCard c={c} />

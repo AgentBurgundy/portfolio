@@ -37,7 +37,7 @@ export const site = {
     eyebrow: "Austin, TX · AI for local businesses",
     headline: ["Put AI to work", "in your business."],
     sub: "Not a chatbot bolted onto your website. I wire AI into how your business actually runs: the phone, the inbox, the quotes, the invoices, the schedule, the numbers. The busywork gets done. You run the business.",
-    trust: "Built and run by one Austin engineer. No agency, no handoffs, no offshore team.",
+    trust: "I've saved small businesses $800–$3,000 a month by replacing software subscriptions with custom tools. Built and run by one Austin engineer.",
   },
 
   pain: {
@@ -111,8 +111,8 @@ export const site = {
   },
 
   proof: {
-    heading: "I've already built this. Twice.",
-    sub: "These aren't slide decks. They're live products running real businesses every day, and they're the same engine I set up for you.",
+    heading: "I've already built this.",
+    sub: "CrewOS is a live product running real businesses every day, and it's the same engine I set up for you.",
     // TODO: record a 60-second screen capture of the AI doing real work (booking a call, drafting an invoice)
     // and paste the embed URL here to show it above the case studies.
     demoVideoUrl: null as string | null,
@@ -131,21 +131,6 @@ export const site = {
           "AI that drafts, chases, and explains the numbers. You approve, it executes",
         ],
         accent: "ember" as const,
-      },
-      {
-        name: "stanly.io",
-        url: "https://stanly.io",
-        logo: "/apps/stanly.png",
-        kicker: "AI handling customer conversations at scale",
-        headline: "Thousands of customer emails a day, answered and closed by AI",
-        body: "When a shopper walks away from an online store, Stanly's AI agents email them, answer objections, look up products and orders, issue a discount if it makes sense, and bring them back to checkout. Every reply is drafted, reviewed by a second AI pass for tone and accuracy, then sent. No human in the loop unless one is needed.",
-        outcomes: [
-          "Reads and replies to real customer emails on its own",
-          "Looks up orders and products, applies discounts, all inside the conversation",
-          "Self-checks every message before it goes out",
-          "The same brain I point at your phone and inbox",
-        ],
-        accent: "ink" as const,
       },
     ],
   },
