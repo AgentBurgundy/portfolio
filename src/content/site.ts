@@ -80,7 +80,7 @@ export const site = {
         blurb: "Everything that happens after the customer says yes.",
         items: [
           { title: "Quotes and invoices drafted for you", text: "From a voice note, site photos, or job notes. You review and send, or let it send." },
-          { title: "Scheduling and dispatch", text: "Jobs land on the calendar, crews or staff get their day on their phone, rain and cancellations get rebalanced." },
+          { title: "Scheduling and coordination", text: "Bookings land on the calendar, your team gets the day's plan, and changes and cancellations get handled." },
           { title: "Bookkeeping busywork", text: "Receipts matched to jobs, supplier bills filed, payments reconciled. No double entry." },
           { title: "Numbers in plain English", text: "A weekly note on revenue, margin, cash, and what's stuck, with where each figure came from." },
         ],
@@ -111,8 +111,8 @@ export const site = {
   },
 
   proof: {
-    heading: "I've already built this.",
-    sub: "CrewOS is a live product running real businesses every day, and it's the same engine I set up for you.",
+    heading: "Proof of work",
+    sub: "CrewOS is one example of the software I've built. Your tools are designed around your business, your workflow, and what you need to save time and money.",
     // TODO: record a 60-second screen capture of the AI doing real work (booking a call, drafting an invoice)
     // and paste the embed URL here to show it above the case studies.
     demoVideoUrl: null as string | null,
@@ -121,7 +121,7 @@ export const site = {
         name: "CrewOS",
         url: "https://crewos.site",
         logo: "/apps/crewos.png",
-        kicker: "A whole business backend, with AI doing the busywork",
+        kicker: "Portfolio project · Custom business software",
         headline: "Lead to quote to schedule to invoice to payroll, in one system",
         body: "I built the entire operating system a service business runs on. Leads from ads, the website, and the phone land in one pipeline with what each one cost. Quotes go out by text and get signed on a phone. Jobs get scheduled and dispatched. Invoices go out from the field. Crews get paid from the same data. An AI assistant drafts replies, chases quiet leads, and answers questions about the numbers.",
         outcomes: [
@@ -167,7 +167,7 @@ export const site = {
       { label: "Based in", value: "Austin, TX" },
       { label: "Building software", value: "8+ years" },
       { label: "Previously", value: "S&P Global, BambooHR" },
-      { label: "Works with", value: "Contractors, clinics, salons, shops, studios, agencies. Anyone with a phone and a back office." },
+      { label: "Works with", value: "Small businesses across industries: clinics, salons, shops, studios, agencies, and more." },
     ],
   },
 
@@ -228,8 +228,8 @@ export const site = {
         a: "Usually not. It works with the phone number, calendar, inbox, and invoicing you already use. If something's missing, I set it up as part of the install.",
       },
       {
-        q: "Is this only for contractors?",
-        a: "No. Contractors are where I started, because I built a whole platform for them. But a clinic, salon, shop, or agency has the same shape: a phone that rings, quotes or bookings to chase, invoices to send, numbers to understand.",
+        q: "What kinds of businesses do you work with?",
+        a: "Small businesses across industries, including clinics, salons, shops, studios, and agencies. We start with your workflow, the software you're paying for, and the work taking up your time. Then I build tools and automations around what your business needs.",
       },
       {
         q: "What does it cost?",
