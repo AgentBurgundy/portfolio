@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "slug": "dircks-moving-logistics",
+  "companyName": "Dircks Moving & Logistics",
+  "website": "https://dircks.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Phoenix moving business and corporate brand; the separate Dircks Logistics division is not combined with dircks.com moving.",
+  "metrics": [
+    {
+      "label": "Operating history / company-reported",
+      "value": "Since 1990",
+      "context": "Reported on the public website; not independently audited.",
+      "sourceIds": [
+        "s1"
+      ]
+    },
+    {
+      "label": "Families moved per year / company-reported",
+      "value": "7,500",
+      "context": "Reported on the public website; not independently audited.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Restore the virtual-estimate appointment step",
+      "observed": "Under Availability, the Virtual Home Moving Estimate page displays a raw contact-form shortcode instead of appointment fields.",
+      "improvement": "Repair the component or use a clear scheduling link, with a visible call/estimate fallback. Verify confirmation and staff notification after any fix.",
+      "sourceIds": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "title": "Reuse specialist project proof close to enquiries",
+      "observed": "The website separates residential and business services and publishes an October 12, 2026 ASU Football logistics case study.",
+      "improvement": "Test a short, sourced project card near the relevant commercial quote action. Reuse the story in social posts linked to that service.",
+      "sourceIds": [
+        "s1",
+        "s4"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Homepage / company-reported claims",
+      "url": "https://dircks.com/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Virtual estimate / Availability component",
+      "url": "https://dircks.com/virtual-home-moving-estimate/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s3",
+      "label": "Alternative estimate-request path",
+      "url": "https://dircks.com/get-an-estimate/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s4",
+      "label": "ASU Football logistics case study",
+      "url": "https://dircks.com/news-happenings/asu-football-london-wembley-logistics/",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "The issue is specific to the observed virtual-estimate component. Other estimate and phone paths exist; submission and staff notification were not tested.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

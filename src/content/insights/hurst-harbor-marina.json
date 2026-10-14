@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "slug": "hurst-harbor-marina",
+  "companyName": "Hurst Harbor Marina",
+  "website": "https://hurstharbor.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Public storage, slip-rental and customer-information pages.",
+  "metrics": [
+    {
+      "label": "Published wet slips / dry-stack spaces",
+      "value": "300 wet / 200 dry",
+      "context": "Company-reported covered wet slips and dry-stack spaces; capacity not independently verified.",
+      "sourceIds": [
+        "s1"
+      ]
+    },
+    {
+      "label": "Stated inquiry response window",
+      "value": "Within 24 hours",
+      "context": "Website promise, not a measured response time.",
+      "sourceIds": [
+        "s2"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Distinguish an inquiry from a reservation",
+      "observed": "Several “Reserve” and “Check Availability” links lead to a slip inquiry section whose text promises a team response within 24 hours. The form includes slip type, boat length and a waitlist option.",
+      "improvement": "Use \"Request availability\" where confirmation is needed, and state when a slip is reserved. Test carrying the chosen slip type into the inquiry.",
+      "sourceIds": [
+        "s2"
+      ]
+    },
+    {
+      "title": "Show when availability was last checked",
+      "observed": "The slip page says availability is updated weekly and uses limited-availability messaging, but its reviewed availability section does not display a dated, slip-by-slip status.",
+      "improvement": "Test a last-updated date and available/inquire/waitlist status by slip type or size. Link social availability posts to that same reference page.",
+      "sourceIds": [
+        "s2",
+        "s1"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Homepage / company-reported capacity",
+      "url": "https://hurstharbor.com/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Slip rentals / availability and inquiry wording",
+      "url": "https://hurstharbor.com/boat-slip-rentals",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "Capacity and response commitments are website-reported. Actual inventory, response performance and portal functionality were not tested.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

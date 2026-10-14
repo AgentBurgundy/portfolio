@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "slug": "best-courier",
+  "companyName": "Best Courier",
+  "website": "https://best-courier.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Best Courier in Columbus, Ohio, at 1200 Technology Drive.",
+  "metrics": [
+    {
+      "label": "Facebook followers / site embed",
+      "value": "144",
+      "context": "Count displayed in the site's live Facebook embed at snapshot; it changes and does not measure reach.",
+      "sourceIds": [
+        "s1"
+      ]
+    },
+    {
+      "label": "Published service availability",
+      "value": "24/7",
+      "context": "Company-published availability; not independently tested.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Explain the two account-entry paths",
+      "observed": "Place an Order opens the e-Courier portal. Open an Account separately says a representative will provide a customer number.",
+      "improvement": "Add guidance for existing customers, new customers and urgent first-time deliveries. Explain how the customer number and portal login relate.",
+      "sourceIds": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "title": "Test a lighter first-contact path",
+      "observed": "The account form requires company, accounts-payable contact, and address details; it also presents optional fax and tax-ID fields.",
+      "improvement": "Discuss an essential-details delivery inquiry with billing setup later. Test completion and dispatch readiness before changing the workflow.",
+      "sourceIds": [
+        "s2"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Homepage / portal and published availability",
+      "url": "https://best-courier.com/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Open an Account / form and guidance",
+      "url": "https://best-courier.com/open-an-account/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s3",
+      "label": "e-Courier portal entry",
+      "url": "https://best.e-courier.com/best/home/index.asp",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "Portal entry was inspected without login or order placement. Tracking, account provisioning and delivery speed were not tested.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

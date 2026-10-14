@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "slug": "spicewood-springs-animal-hospital",
+  "companyName": "Spicewood Springs Animal Hospital",
+  "website": "https://spicewoodanimalhospital.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Public website and client-intake pages; distinguished from the separately linked cat hospital.",
+  "metrics": [
+    {
+      "label": "Mon–Thu published closing time",
+      "value": "8 pm",
+      "context": "Official-site evening hours at the snapshot; may change.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Mark old event invitations as archived",
+      "observed": "The 2010-dated event URL still displays an invitation to reserve a place for July 15. The article body shows no year or archived-event notice.",
+      "improvement": "Add the event year and a past-event label, linking to current contact or event information. Retain the historical page without an outdated reservation prompt.",
+      "sourceIds": [
+        "s2"
+      ]
+    },
+    {
+      "title": "Review the first-visit intake burden",
+      "observed": "The client form requires a Texas driver's-license number alongside address and contact details; optional employment and partner-employment fields appear before pet details.",
+      "improvement": "Discuss essential first-step details, grouped sections and a clear explanation of identity-data handling. Measure completion before changing the full intake.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Client-intake form / published hours",
+      "url": "https://spicewoodanimalhospital.com/forms/client-information/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Historical event invitation / 2010 URL",
+      "url": "https://spicewoodanimalhospital.com/blog/2010/06/30/pet-first-aid-disaster-response-training-2/",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "The client form was visible; submission and delivery were not tested.",
+    "This covers website/intake usability, not clinical care, legal compliance or a security audit.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

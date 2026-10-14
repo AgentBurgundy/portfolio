@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "slug": "edens-moving-services",
+  "companyName": "Eden's Moving Services",
+  "website": "https://edensmoving.com/moving-services/local-moving-services/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Denver, Colorado; local-moving landing page and linked public profiles.",
+  "metrics": [
+    {
+      "label": "Instagram followers shown",
+      "value": "111",
+      "context": "Public profile count at the snapshot; not a measure of reach or engagement.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Fix the hero estimate anchor",
+      "observed": "The hero estimate button targets #orm and remained at the hero when clicked. The header’s #form link scrolled to the estimate form.",
+      "improvement": "Point estimate buttons to the working form anchor. Verify keyboard focus and scrolling on mobile before treating that path as tested.",
+      "sourceIds": [
+        "s2"
+      ]
+    },
+    {
+      "title": "Make the text-message choice unambiguous",
+      "observed": "The form’s accessible text says submission agrees to texts, while the same form offers both agreement and a no-text option.",
+      "improvement": "Review visible copy, accessible labels and actual handling for one consistent choice. This is a clarity suggestion, not a legal-compliance finding.",
+      "sourceIds": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Officially linked Instagram / snapshot count",
+      "url": "https://www.instagram.com/edensmoving/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Local-moving page / estimate anchor and form",
+      "url": "https://edensmoving.com/moving-services/local-moving-services/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s3",
+      "label": "About / linked form context",
+      "url": "https://edensmoving.com/company/about/",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "Estimate links were tested without data entry or submission. Text delivery and consent storage were not tested.",
+    "Follower count is dated; complete posting history, reach and engagement were not established.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

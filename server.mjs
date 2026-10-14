@@ -37,6 +37,7 @@ const contentType = {
   ".json": "application/json; charset=utf-8",
   ".txt": "text/plain; charset=utf-8",
   ".xml": "application/xml; charset=utf-8",
+  ".pdf": "application/pdf",
   ".woff2": "font/woff2",
 };
 
@@ -62,6 +63,38 @@ const server = http.createServer(async (req, res) => {
     const pathname = decodeURIComponent(url.pathname);
     const isMmatx = /^\/mmatx\/?$/.test(pathname);
     if (isMmatx) res.setHeader("X-Robots-Tag", "noindex, nofollow");
+
+    // Reports are standalone, build-generated documents. This namespace has no
+    // listing, SPA fallback, source JSON, or alternate /index.html URLs.
+    const isInsight = /^\/insights(?:\/|$)/.test(pathname);
+    if (isInsight || pathname === "/insights-unavailable.html") {
+      res.setHeader("X-Robots-Tag", "noindex, nofollow");
+      res.setHeader("Cache-Control", "no-cache");
+      res.setHeader("X-Content-Type-Options", "nosniff");
+      res.setHeader("Referrer-Policy", "no-referrer");
+      if (req.method !== "GET" && req.method !== "HEAD") {
+        res.writeHead(405, { Allow: "GET, HEAD" });
+        res.end("Method Not Allowed");
+        return;
+      }
+      const match = /^\/insights\/([a-z0-9]+(?:-[a-z0-9]+)*)(\/report\.pdf|\/)?$/.exec(pathname);
+      const pdf = match?.[2] === "/report.pdf";
+      const file = match ? path.join(distDir, "insights", match[1], pdf ? "report.pdf" : "index.html") : null;
+      if (file && await exists(file)) {
+        const body = await readFile(file);
+        res.writeHead(200, {
+          "Content-Type": pdf ? contentType[".pdf"] : contentType[".html"],
+          "Content-Length": body.length,
+          ...(pdf ? { "Content-Disposition": `attachment; filename="${match[1]}-public-presence.pdf"` } : {}),
+        });
+        res.end(req.method === "HEAD" ? undefined : body);
+      } else {
+        const body = await readFile(path.join(distDir, "insights-unavailable.html"));
+        res.writeHead(404, { "Content-Type": contentType[".html"] });
+        res.end(req.method === "HEAD" ? undefined : body);
+      }
+      return;
+    }
 
     if (pathname === "/api/health" && req.method === "GET") {
       json(res, 200, { ok: true, resendConfigured: Boolean(resendApiKey) });
@@ -285,7 +318,7 @@ function readBody(req, maxBytes) {
 }
 
 server.listen(port, host, () => {
-  console.log(`aibaker.io listening on http://${host}:${port}`);
+  console.log(`aibaker.io listening on http://${host}:${server.address().port}`);
   console.log(
     `Contact form: ${resendApiKey ? "configured" : "NOT configured"} → ${contactEmail}`,
   );

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "slug": "camp-lucy",
+  "companyName": "Camp Lucy",
+  "website": "https://www.camplucy.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Dripping Springs, Texas; public stay, event, venue and contact pages were reviewed.",
+  "metrics": [
+    {
+      "label": "Required event-inquiry questions",
+      "value": "14",
+      "context": "Visible labels counted: first/last name separately; the prior-visit yes/no choice counted once.",
+      "sourceIds": [
+        "s1"
+      ]
+    },
+    {
+      "label": "Wedding venue options presented",
+      "value": "5",
+      "context": "Five distinct options on the wedding venue page; capacities vary by layout.",
+      "sourceIds": [
+        "s2"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Test a lighter first inquiry",
+      "observed": "The event form marks 14 questions required, including budget, room count, referral source and booking urgency.",
+      "improvement": "Test an initial step for contact details, event type, approximate date and guest count. Collect planning details later; compare completion and lead quality.",
+      "sourceIds": [
+        "s1"
+      ]
+    },
+    {
+      "title": "Make venue comparison easier",
+      "observed": "Five venue sections provide capacity and setting information; their named inquiry links lead to the same contact page.",
+      "improvement": "Test a compact comparison by guest count and indoor/outdoor setting, carrying the selected venue into the inquiry. Current abandonment was not measured.",
+      "sourceIds": [
+        "s2"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Contact / event-inquiry form",
+      "url": "https://www.camplucy.com/contact/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Wedding venue options",
+      "url": "https://www.camplucy.com/weddings/venues/",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "Counts concern visible required labels and published venue options. No form was submitted or completed-booking performance measured.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

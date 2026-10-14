@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "slug": "north-austin-animal-hospital",
+  "companyName": "North Austin Animal Hospital",
+  "website": "https://northaustinanimalhospital.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Public website and appointment-request page; the booking observation concerns one desktop-browser review session.",
+  "metrics": [
+    {
+      "label": "Website-displayed Google rating",
+      "value": "4.8/5",
+      "context": "Displayed by the hospital site; the current Google listing and review count were not independently checked.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Check booking resilience and the fallback path",
+      "observed": "In one desktop-browser session and after reload, the appointment page showed its heading, phone fallback and illustration, but no scheduling fields or calendar controls.",
+      "improvement": "Recheck ordinary browsers and blocked-script conditions. If a scheduler is intended, keep a direct booking link or clearly labelled phone fallback visible.",
+      "sourceIds": [
+        "s2"
+      ]
+    },
+    {
+      "title": "Date time-sensitive homepage notices clearly",
+      "observed": "A time-sensitive homepage news excerpt says \"as of June 17\" without a year in that excerpt; it links separately to the news article.",
+      "improvement": "Add a full date beside time-sensitive excerpts. Assign a review owner and label historical notices; this does not assess clinical accuracy.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Homepage / displayed rating and news excerpt",
+      "url": "https://northaustinanimalhospital.com/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Appointment page / one-session resilience observation",
+      "url": "https://northaustinanimalhospital.com/appointment-request",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "The booking result is specific to one browser session. Its cause and customer impact are unknown; it does not establish a sitewide booking failure.",
+    "No client app or scheduler was authenticated or submitted. Clinical accuracy and treatment advice were outside scope.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

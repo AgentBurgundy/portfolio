@@ -60,6 +60,10 @@ Railway automatically deploys `master`. Keep the route, dataset, styles, and ser
 
 `node scripts/verify-mountain-destinations.mjs` records the seven previously flagged source/destination pairs using read-only HTTP GET and a visible, fresh installed Edge session. The October 13 recheck returned 200 for all six source pages and 404 / `Not Found` for all seven exact destinations, with no redirects. These local results conflict with cached search content and the reported working-page experience, so the concise presentation keeps the claim withdrawn. Exact status, titles, final URLs and screenshots are stored in the system temporary directory; no forms are submitted.
 
+## Reusable prospect reports
+
+The standalone `/insights/<company-slug>` report system and matching `/report.pdf` downloads are generated from approved JSON in `src/content/insights/`. Reports have no public index, homepage links, analytics, or third-party requests, and receive `noindex, nofollow` in both the initial HTML and HTTP headers. They are publicly accessible. See [`audits/README.md`](audits/README.md) for the verified October 14, 2026 batch, data contract, factual-review requirements, browser/PDF checks, and existing Railway `master` deployment workflow.
+
 ## Contact form
 
 `POST /api/contact` relays to [Resend](https://resend.com). Environment variables:

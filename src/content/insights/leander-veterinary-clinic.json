@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "slug": "leander-veterinary-clinic",
+  "companyName": "Leander Veterinary Clinic",
+  "website": "https://www.leandervetclinic.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Public website and appointment-request pages; clinical care and patient data are outside scope.",
+  "metrics": [
+    {
+      "label": "Published opening schedule",
+      "value": "Mon–Sat",
+      "context": "Sunday closed. Published on the official website at the snapshot; may change.",
+      "sourceIds": [
+        "s1"
+      ]
+    },
+    {
+      "label": "Online request lead time",
+      "value": "At least 2 days",
+      "context": "Two full business days; a published request rule, not a measure of appointment availability.",
+      "sourceIds": [
+        "s2"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Separate same-day calls from later appointment requests",
+      "observed": "The homepage advertises same-day appointments. The online request page says requests must be at least two full business days ahead and require staff confirmation.",
+      "improvement": "Pair choices: call for same-day availability or request a later appointment. Repeat the lead-time and staff-confirmation rule beside the homepage button.",
+      "sourceIds": [
+        "s1",
+        "s2"
+      ]
+    },
+    {
+      "title": "Make email routes consistent or explain their roles",
+      "observed": "The reviewed header email icon and footer email link point to different clinic email addresses. Both are public business routes, but their different purposes are not explained there.",
+      "improvement": "Confirm the preferred general-inquiry address; standardize links or explain each route's role. Test both internally without assuming either is unmonitored.",
+      "sourceIds": [
+        "s1",
+        "s2"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Homepage / schedule and public contact links",
+      "url": "https://www.leandervetclinic.com/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Appointment request / lead time and confirmation",
+      "url": "https://www.leandervetclinic.com/makeanappointment",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "The form loaded, but submission and delivery were not tested. Neither public email route is assumed inactive; appointment availability was outside scope.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

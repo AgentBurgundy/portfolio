@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "slug": "fire-dawgs-junk-removal",
+  "companyName": "Fire Dawgs Junk Removal",
+  "website": "https://firedawgsjunkremoval.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Indianapolis operation of the multi-location Fire Dawgs brand; an older local article and the current Indianapolis page were reviewed.",
+  "metrics": [
+    {
+      "label": "Reuse, donation or recycling commitment",
+      "value": "At least 60%",
+      "context": "Company claim/commitment for removed items; no independent waste-diversion measurement reviewed.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Send review-seeking visitors to actual reviews",
+      "observed": "On the older Indianapolis article, Google Reviews links to a legacy Google+ URL; following it opened Google's 2023 Currents update rather than this business's reviews.",
+      "improvement": "Replace that one link with a verified current review profile. Check other legacy local pages for the same destination, then test on desktop and a phone.",
+      "sourceIds": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "title": "Bring legacy Indianapolis visitors into the current enquiry flow",
+      "observed": "The older article focuses on the company story and phone/email contact. The current Indianapolis page also explains text-photo estimates, booking and service questions. Both remain accessible.",
+      "improvement": "Add a local quote or photo-estimate path to the older article. Review traffic and inbound links before consolidation; use the same local campaign destination.",
+      "sourceIds": [
+        "s1",
+        "s4"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Older Indianapolis article / review link",
+      "url": "https://firedawgsjunkremoval.com/local-junk-removal-in-indianapolis/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Legacy Google+ link destination",
+      "url": "https://plus.google.com/+Junkdawgs/about?hl=en",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s3",
+      "label": "Observed final destination / Currents update",
+      "url": "https://workspaceupdates.googleblog.com/2023/04/new-community-features-for-google-chat-and-an-update-currents%20.html",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s4",
+      "label": "Current Indianapolis service page",
+      "url": "https://firedawgsjunkremoval.com/junk-removal-indianapolis/",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "The review-link issue concerns one observed link destination on the older article. The current Indianapolis service page was also accessible.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

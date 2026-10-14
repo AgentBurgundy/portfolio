@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "slug": "square-cow-movers",
+  "companyName": "Square Cow Movers",
+  "website": "https://squarecowmovers.com/locations/austin-tx/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Austin/Cedar Park operating location at 2500 Brushy Creek Loop, Cedar Park, Texas; not every franchise or the wider network.",
+  "metrics": [],
+  "observations": [
+    {
+      "title": "Point labor-only visitors to the right service",
+      "observed": "The Austin page’s Labor Only Services button links to the packing-materials page. The footer has a separate labor-only destination.",
+      "improvement": "Change that button to the existing labor-only page, then check other service buttons on desktop and mobile.",
+      "sourceIds": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "title": "Use one founding year",
+      "observed": "The Austin page title says service began in 2008; its body says 2007.",
+      "improvement": "Confirm the correct milestone and use it consistently in the title and page copy.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Austin / Cedar Park page and service button",
+      "url": "https://squarecowmovers.com/locations/austin-tx/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Current Labor Only Services button destination",
+      "url": "https://squarecowmovers.com/packing-materials/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s3",
+      "label": "Existing labor-only service page",
+      "url": "https://squarecowmovers.com/labor-only-moves/",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "Shared-brand reviews and follower counts are not attributed to this location. Social reach, engagement and posting frequency were not measured.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

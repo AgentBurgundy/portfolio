@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "slug": "heavenly-moving-and-storage",
+  "companyName": "Heavenly Moving and Storage",
+  "website": "https://heavenlymove.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Public moving, service and initial quote-entry pages.",
+  "metrics": [
+    {
+      "label": "Company-reported moves since 2005",
+      "value": "50,000+",
+      "context": "Reported on the company website; not independently audited.",
+      "sourceIds": [
+        "s1"
+      ]
+    },
+    {
+      "label": "Website-displayed review summary",
+      "value": "4.9 stars",
+      "context": "Website reports 2,100+ reviews; the live platform count was not independently verified.",
+      "sourceIds": [
+        "s2"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Make comparison claims easy to verify",
+      "observed": "The homepage compares its rating with an asserted industry average and shows a \"typical mover\" fee comparison, without a methodology or dated supporting source beside the reviewed blocks.",
+      "improvement": "Add the basis, date and scope for comparisons, or lead with the company's published inclusions. Link review and recognition statements to their sources.",
+      "sourceIds": [
+        "s2",
+        "s1"
+      ]
+    },
+    {
+      "title": "Proofread the testimonial-card presentation",
+      "observed": "Several homepage testimonial cards contain sentence fragments, including a standalone \"They.\" before the next sentence.",
+      "improvement": "Check the template and source excerpts. Restore complete sentences without changing meaning; link originals where permission and platform rules allow.",
+      "sourceIds": [
+        "s2"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "About / company-reported history",
+      "url": "https://heavenlymove.com/about-us",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Homepage / displayed reviews and comparisons",
+      "url": "https://heavenlymove.com/",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "Only the initial quote step was inspected. Later steps, actual prices, booking confirmation and guarantee operation were not tested.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

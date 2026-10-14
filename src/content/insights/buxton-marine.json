@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "slug": "buxton-marine",
+  "companyName": "Buxton Marine",
+  "website": "https://www.buxtonmarine.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Lewisville, Texas; the separately hosted Nautique Dealer Texas blog links to the main dealer site.",
+  "metrics": [
+    {
+      "label": "Locations presented on the website",
+      "value": "2",
+      "context": "Lewisville headquarters and seasonal Long Cove Marina location; a website fact, not a performance metric.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Make a first demo easier to request",
+      "observed": "The demo form requires visitors to type which boat they want and correctly explains that their chosen date is only a request.",
+      "improvement": "Test a model selector with an \"I'm not sure yet\" path based on activity and group size. Keep the requested-date caveat and explain confirmation.",
+      "sourceIds": [
+        "s2"
+      ]
+    },
+    {
+      "title": "Connect educational content to the next step",
+      "observed": "The separate Nautique Dealer Texas blog links readers to Buxton’s main inventory and contact pages.",
+      "improvement": "Test one model-specific inventory or demo link per relevant article. Keep branding consistent and measure article-to-inquiry progression before a migration.",
+      "sourceIds": [
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Homepage / locations",
+      "url": "https://www.buxtonmarine.com/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Demo-request form",
+      "url": "https://www.buxtonmarine.com/texas-boats-for-sale/schedule-a-test-ride/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s3",
+      "label": "Nautique Dealer Texas blog",
+      "url": "https://www.nautiquedealertexas.com/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s4",
+      "label": "Main dealer blog",
+      "url": "https://www.buxtonmarine.com/blog/",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "The older event-specific URL was unavailable for review. The blog homepage links establish its relationship with the main dealer site.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

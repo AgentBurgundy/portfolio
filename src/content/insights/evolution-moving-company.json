@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "slug": "evolution-moving-company",
+  "companyName": "Evolution Moving Company",
+  "website": "https://evolutionmoving.com/san-antonio/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "San Antonio operation; the current redirected San Antonio page and its linked social profiles.",
+  "metrics": [
+    {
+      "label": "San Antonio offices listed",
+      "value": "2",
+      "context": "Parliament Street and Culebra Road office cards on the live company page.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Align the linked Instagram with San Antonio",
+      "observed": "The website links to @evolutionmovingsa2019. That profile is named San Antonio, but its bio describes Fort Worth and links to evolutionmovingsa.com.",
+      "improvement": "Confirm the intended local account, update city/contact details and link to the current San Antonio page or quote path.",
+      "sourceIds": [
+        "s1",
+        "s2"
+      ]
+    },
+    {
+      "title": "Carry local context into the quote page",
+      "observed": "San Antonio calls to action open a general quote page. Its header number differs from the two labeled San Antonio office numbers.",
+      "improvement": "Test a San Antonio-specific heading and labelled local contact route on quote entry. Preserve location context; current phone routing was not tested.",
+      "sourceIds": [
+        "s1",
+        "s3"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Current San Antonio page / office cards",
+      "url": "https://evolutionmoving.com/san-antonio/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Linked Instagram / displayed city and bio",
+      "url": "https://www.instagram.com/evolutionmovingsa2019/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s3",
+      "label": "General quote-entry page",
+      "url": "https://evolutionmoving.com/free-quote/",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "The older San Antonio URL redirects to the current page used here; the Instagram bio's alternate domain was not established as current or under the same ownership.",
+    "Phone routing and lead assignment were not tested; social reach and engagement were not measured.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

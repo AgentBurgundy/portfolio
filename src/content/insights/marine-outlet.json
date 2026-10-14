@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "slug": "marine-outlet",
+  "companyName": "Marine Outlet",
+  "website": "https://www.marineoutlet.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Temple, Texas; current sales, service and model-research pages were reviewed.",
+  "metrics": [],
+  "observations": [
+    {
+      "title": "Keep seasonal hours consistent",
+      "observed": "The live service-page footer says Saturdays are closed for winter beginning October 3. The embedded booking policy still lists Saturday hours of 8 a.m.–1 p.m.",
+      "improvement": "Reconcile the booking policy with current winter hours, including any appointment messages. State effective dates for a clear drop-off schedule.",
+      "sourceIds": [
+        "s1"
+      ]
+    },
+    {
+      "title": "Separate available stock from model research",
+      "observed": "The Brands page presents manufacturer catalogs with New Models links and some separate In-Stock links; the homepage also offers an in-stock inventory path.",
+      "improvement": "Test two clear choices: available boats or model research. Keep the distinction visible on phones and retain the selected brand when switching.",
+      "sourceIds": [
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Boat service / hours and booking policy",
+      "url": "https://www.marineoutlet.com/boat-repair-service",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Brands / model-research and stock paths",
+      "url": "https://www.marineoutlet.com/new-models",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s3",
+      "label": "Homepage / inventory path",
+      "url": "https://www.marineoutlet.com/",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "The embedded scheduler was inspected after loading; no appointment was submitted. The hours discrepancy reflects the snapshot date.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

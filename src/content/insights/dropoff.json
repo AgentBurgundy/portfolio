@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "slug": "dropoff",
+  "companyName": "Dropoff",
+  "website": "https://www.dropoff.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Austin-headquartered national business courier brand; corporate website, not an Austin-only branch.",
+  "metrics": [
+    {
+      "label": "Brands served / company-reported",
+      "value": "270+ global brands",
+      "context": "Reported on the public website; not independently audited.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Set a consistent quote expectation",
+      "observed": "The pricing FAQ offers an estimate “right away”; its link leads to Get Started, which says a team member will contact the visitor the same day.",
+      "improvement": "Align quote wording with the response window. Test a short first step separating one-time from recurring deliveries; compare qualified inquiries.",
+      "sourceIds": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "title": "Make industry choices more specific",
+      "observed": "The homepage Healthcare and Industrial cards use the same supply-chain and 24/7-support paragraph, even though each links to a different industry service.",
+      "improvement": "Give each card a specific use case and supporting proof point. Test corresponding campaign links for relevant inquiries rather than assuming sales lift.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Homepage / claims and industry cards",
+      "url": "https://www.dropoff.com/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Pricing / quote expectation",
+      "url": "https://www.dropoff.com/pricing/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s3",
+      "label": "Get Started / response window",
+      "url": "https://www.dropoff.com/get-started/",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "Internal systems and integration needs require discovery; conversion and existing workflow performance were not measured.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

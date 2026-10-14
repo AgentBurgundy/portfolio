@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "slug": "bay-marine-sports-center",
+  "companyName": "Bay Marine & Sports Center",
+  "website": "https://www.baymarine-sc.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "Horseshoe Bay, Texas; current sales, service and inventory pages were reviewed.",
+  "metrics": [],
+  "observations": [
+    {
+      "title": "Clarify the installed engine",
+      "observed": "The live 2019 South Bay 525RS 3.0 listing shows both 350 HP and 250 hp as engine power in the same expanded specifications panel.",
+      "improvement": "Confirm the installed engine and distinguish it from generic model specifications or limits. Reuse verified specifications across listing details.",
+      "sourceIds": [
+        "s1"
+      ]
+    },
+    {
+      "title": "Bring the service request closer to the service choice",
+      "observed": "The service page describes dockside work and a long range of maintenance options, with its Service Request link after those sections.",
+      "improvement": "Test a request button near the introduction and dockside service. Carry the selected service into the inquiry and compare qualified requests.",
+      "sourceIds": [
+        "s2"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "2019 South Bay 525RS 3.0 / live listing",
+      "url": "https://www.baymarine-sc.com/inventory/2019-south-bay-525rs-30-horseshoe-bay-tx-78657-13739395i",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Service department",
+      "url": "https://www.baymarine-sc.com/service-department",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "The older print-format inventory URL was unavailable for review. The discrepancy was verified on a current listing; inventory can change.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}

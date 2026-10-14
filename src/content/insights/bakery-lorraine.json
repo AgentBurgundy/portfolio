@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "slug": "bakery-lorraine",
+  "companyName": "Bakery Lorraine",
+  "website": "https://bakerylorraine.com/",
+  "snapshotDate": "2026-10-14",
+  "publicationApproved": true,
+  "scope": "San Antonio, Austin and Boerne business; public location and ordering paths were reviewed.",
+  "metrics": [
+    {
+      "label": "Advance notice requested / custom cakes",
+      "value": "72 hours",
+      "context": "Website policy; Friday-after-3-p.m. response cutoff also applies. Orders require email confirmation.",
+      "sourceIds": [
+        "s1"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "title": "Clarify which kind of order a customer wants",
+      "observed": "The live homepage promotes a seasonal preorder, merchandise and shipped macarons, while Place an Order goes to a separate Square ordering site.",
+      "improvement": "Test a first choice of local pickup, shipped treats or custom celebration orders. Use the same labels in campaign links to the appropriate order flow.",
+      "sourceIds": [
+        "s2",
+        "s3"
+      ]
+    },
+    {
+      "title": "Give menus a phone-friendly companion",
+      "observed": "Regional menu links use an external QR-link service, and the catering link opens a PDF menu.",
+      "improvement": "Offer an HTML menu alongside PDFs, with item categories and location-specific order buttons. Maintain prices and availability from the same approved source.",
+      "sourceIds": [
+        "s4",
+        "s5"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Custom-order timing policy",
+      "url": "https://bakerylorraine.com/pages/custom-orders",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s2",
+      "label": "Homepage / ordering choices",
+      "url": "https://bakerylorraine.com/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s3",
+      "label": "Square ordering destination",
+      "url": "https://bakerylorraine.square.site/",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s4",
+      "label": "Contact / menu links",
+      "url": "https://bakerylorraine.com/pages/contact",
+      "observedOn": "2026-10-14"
+    },
+    {
+      "id": "s5",
+      "label": "Regional menu redirect",
+      "url": "https://qrco.de/bgLVFU",
+      "observedOn": "2026-10-14"
+    }
+  ],
+  "limitations": [
+    "Regional menu redirects were not fully reviewed; the catering PDF was retrievable. No broken-link finding is made.",
+    "Public website review only. No forms submitted or mobile-usability, conversion, speed or internal-system tests performed."
+  ]
+}
