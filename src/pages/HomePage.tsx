@@ -6,6 +6,7 @@ import { site, type CaseStudy } from '../content/site'
 import { OpsFeed } from '../components/demo/OpsFeed'
 import { PhoneIcon } from '../components/site/SiteHeader'
 import { sendContactMessage, validateContactForm, type ContactFormData } from '../lib/contact'
+import { trackEvent } from '../lib/analytics'
 
 /* ───────────────── helpers ───────────────── */
 
@@ -645,13 +646,16 @@ function Contact() {
     e.preventDefault()
     const v = validateContactForm(form)
     if (!v.valid) {
+      trackEvent('Contact Form Validation Failed', { error_count: v.errors.length })
       setErrors(v.errors)
       setStatus('error')
       setStatusMessage('')
       return
     }
     setStatus('submitting')
+    if (!form.website) trackEvent('Contact Form Submitted')
     const r = await sendContactMessage(form)
+    if (!form.website) trackEvent(r.success ? 'Contact Form Succeeded' : 'Contact Form Failed')
     if (r.success) {
       setStatus('success')
       setStatusMessage(site.contact.success)
