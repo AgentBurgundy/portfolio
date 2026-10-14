@@ -1,0 +1,262 @@
+{
+  "observedDate": "2026-10-13",
+  "provenance": {
+    "libraryId": "libfile_1a5eadbf14b88191ac094a74d1fecaa9",
+    "note": "Concise view derived from the public audit snapshot. URL counts are deduplicated.",
+    "correction": "The prior automated broken-link claim is withdrawn from this concise public page. Exact local browser and HTTP recheck results are recorded separately in the archive."
+  },
+  "branches": [
+    {
+      "name": "Mountain Movers Austin",
+      "shortName": "Austin",
+      "rating": 4.9,
+      "reviews": 630,
+      "replies": 5,
+      "sample": 5,
+      "recentPostObserved": true,
+      "url": "https://www.google.com/maps/place/Mountain+Movers/@30.2647051,-97.7823124,17z/data=!3m1!5s0x8644b533b55b9c25:0x26808c47bf9815cc!4m16!1m9!3m8!1s0x8644d35e3dc87e7b:0xb30b932c5eb8127f!2sMountain+Movers!8m2!3d30.2647051!4d-97.7823124!9m1!1b1!16s%2Fg%2F11y71mb9lg!3m5!1s0x8644d35e3dc87e7b:0xb30b932c5eb8127f!8m2!3d30.2647051!4d-97.7823124!16s%2Fg%2F11y71mb9lg?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "Mountain Movers Round Rock",
+      "shortName": "Round Rock",
+      "rating": 5,
+      "reviews": 17,
+      "replies": 5,
+      "sample": 5,
+      "recentPostObserved": true,
+      "url": "https://www.google.com/maps/place/Mountain+Movers/@30.4892874,-97.6799207,17z/data=!3m1!5s0x8644d1e11cbdfddf:0x65c9974894b93fdb!4m16!1m9!3m8!1s0x8644d12b0a842f51:0xc0d3cd809fb524cf!2sMountain+Movers!8m2!3d30.4892874!4d-97.6799207!9m1!1b1!16s%2Fg%2F11ym7vk8gp!3m5!1s0x8644d12b0a842f51:0xc0d3cd809fb524cf!8m2!3d30.4892874!4d-97.6799207!16s%2Fg%2F11ym7vk8gp?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    }
+  ],
+  "contentUrls": 486,
+  "chart": [
+    {
+      "name": "Mountain Movers Austin",
+      "label": "Mountain Movers · Austin",
+      "reviews": 630,
+      "rating": 4.9,
+      "target": true,
+      "selected": true,
+      "url": "https://www.google.com/maps/place/Mountain+Movers/@30.2647051,-97.7823124,17z/data=!3m1!5s0x8644b533b55b9c25:0x26808c47bf9815cc!4m16!1m9!3m8!1s0x8644d35e3dc87e7b:0xb30b932c5eb8127f!2sMountain+Movers!8m2!3d30.2647051!4d-97.7823124!9m1!1b1!16s%2Fg%2F11y71mb9lg!3m5!1s0x8644d35e3dc87e7b:0xb30b932c5eb8127f!8m2!3d30.2647051!4d-97.7823124!16s%2Fg%2F11y71mb9lg?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "3 Men Movers",
+      "label": "3 Men Movers · Austin",
+      "reviews": 1161,
+      "rating": 4.9,
+      "target": false,
+      "selected": true,
+      "url": "https://www.google.com/maps/place/3+Men+Movers+-+Austin/@30.2720098,-97.7408639,17z/data=!3m1!4b1!4m6!3m5!1s0x8644d1e63c5cf289:0x97d8e473a9737da0!8m2!3d30.2720098!4d-97.7408639!16s%2Fg%2F11b707j1m3?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "AB Moving",
+      "label": "AB Moving · Austin",
+      "reviews": 548,
+      "rating": 4.7,
+      "target": false,
+      "selected": true,
+      "url": "https://www.google.com/maps/place/AB+Moving+Austin/@30.3902093,-97.7400046,17z/data=!3m1!4b1!4m6!3m5!1s0x8644d36a5a70578b:0x81669ce01fc82ab2!8m2!3d30.3902093!4d-97.7400046!16s%2Fg%2F11hftbjtln?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "Apple",
+      "label": "Apple Moving · Austin",
+      "reviews": 75,
+      "rating": 4.3,
+      "target": false,
+      "selected": false,
+      "url": "https://www.google.com/maps/place/Apple+Moving/@30.3539049,-97.6671462,17z/data=!3m1!4b1!4m6!3m5!1s0x8644c908c5ef7ded:0x44a60a7f98aeb943!8m2!3d30.3539049!4d-97.6671462!16s%2Fg%2F113hmm12d?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "Austin Moving Forward",
+      "label": "Austin Moving Forward",
+      "reviews": 130,
+      "rating": 4.9,
+      "target": false,
+      "selected": false,
+      "url": "https://www.google.com/maps/place/Austin+Moving+Forward/@30.3340208,-97.6619321,17z/data=!3m1!4b1!4m6!3m5!1s0x8644c9a76e60f9a3:0x3851e7c310f50cc4!8m2!3d30.3340208!4d-97.6619321!16s%2Fg%2F11gzs4p09?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "College Hunks",
+      "label": "College HUNKS · Austin",
+      "reviews": 1637,
+      "rating": 4.8,
+      "target": false,
+      "selected": false,
+      "url": "https://www.google.com/maps/place/College+Hunks+Hauling+Junk+and+Moving+Austin/@30.281493,-97.6105333,17z/data=!3m1!4b1!4m6!3m5!1s0x8644b74494848697:0xf296f3c4bcaa1473!8m2!3d30.281493!4d-97.6105333!16s%2Fg%2F11h0mw7p2l?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "Einstein North",
+      "label": "Einstein · North Austin",
+      "reviews": 1534,
+      "rating": 4.9,
+      "target": false,
+      "selected": true,
+      "url": "https://www.google.com/maps/place/Einstein+Moving+Company/@30.2817738,-97.7160787,12z/data=!4m10!1m2!2m1!1sEinstein+Moving+Austin!3m6!1s0x8644c9a082691fa1:0xf18429f35cd2a8b9!8m2!3d30.3486778!4d-97.6733471!15sChZFaW5zdGVpbiBNb3ZpbmcgQXVzdGluIgOIAQFaGCIWZWluc3RlaW4gbW92aW5nIGF1c3RpbpIBDm1vdmluZ19jb21wYW55mgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJ4YU5GSldSa0pTVlhNeFZqTktlR1F5ZEVkVWJYaFBXV3hTTTFJell4QULgAQD6AQQIABBI!16s%2Fg%2F1pv05jjql?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "Heavenly",
+      "label": "Heavenly · Austin",
+      "reviews": 1507,
+      "rating": 4.9,
+      "target": false,
+      "selected": true,
+      "url": "https://www.google.com/maps/place/Austin+Movers+-+Heavenly+Moving/@30.4330478,-97.8380596,17z/data=!3m1!4b1!4m6!3m5!1s0x8644cd323e668049:0xa5c24a4c61ee2b73!8m2!3d30.4330478!4d-97.8380596!16s%2Fg%2F113dxbqp7?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "Muscleman Elite Austin",
+      "label": "Muscleman Elite · Austin",
+      "reviews": 964,
+      "rating": 4.9,
+      "target": false,
+      "selected": false,
+      "url": "https://www.google.com/maps/place/Muscleman+Elite+Movers+Austin/@30.3181321,-97.8540291,11z/data=!4m10!1m2!2m1!1sMuscleman+Elite+Movers+Austin!3m6!1s0x865b53df5a7ceb6d:0xd3bf6d4357efffff!8m2!3d30.2706671!4d-97.7415562!15sCh1NdXNjbGVtYW4gRWxpdGUgTW92ZXJzIEF1c3RpblofIh1tdXNjbGVtYW4gZWxpdGUgbW92ZXJzIGF1c3RpbpIBDm1vdmluZ19jb21wYW55mgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJwV1lWRXlOWFpqVmtaUVRXeFNabUY2V2xWVWJWSk5UMGRWTlZadVl4QULgAQD6AQQIABBH!16s%2Fg%2F11grswdvp5?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "Not A Hobby",
+      "label": "Not A Hobby · Austin",
+      "reviews": 564,
+      "rating": 4.9,
+      "target": false,
+      "selected": true,
+      "url": "https://www.google.com/maps/place/Not+A+Hobby+Moving/@30.309295,-97.715179,17z/data=!3m1!4b1!4m6!3m5!1s0x8644b50172e8a27b:0x76d8ebf026fb04e3!8m2!3d30.309295!4d-97.715179!16s%2Fg%2F11mx50sl8j?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "Square Cow North",
+      "label": "Square Cow · Cedar Park",
+      "reviews": 2109,
+      "rating": 4.9,
+      "target": false,
+      "selected": true,
+      "url": "https://www.google.com/maps/place/Square+Cow+Movers/@31.6144032,-97.514116,8z/data=!4m10!1m2!2m1!1sSquare+Cow+Moving+Austin!3m6!1s0x865b2d4065d9b2b7:0x965d4edd24aae544!8m2!3d30.499942!4d-97.8041688!15sChhTcXVhcmUgQ293IE1vdmluZyBBdXN0aW4iA4gBAVoaIhhzcXVhcmUgY293IG1vdmluZyBhdXN0aW6SAQ5tb3ZpbmdfY29tcGFueZoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VSTU5WOXBNVFpCUlJBQuABAPoBBAhyEEo!16s%2Fg%2F1td6149n?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "Two Men and a Truck North",
+      "label": "Two Men and a Truck · North Austin",
+      "reviews": 1566,
+      "rating": 4.7,
+      "target": false,
+      "selected": false,
+      "url": "https://www.google.com/maps/place/Two+Men+and+a+Truck+Austin+North/@30.3472001,-97.74547,12z/data=!4m10!1m2!2m1!1sTwo+Men+And+A+Truck+Austin!3m6!1s0x8644d164d60fb969:0x1569e8413285b615!8m2!3d30.4243258!4d-97.7506702!15sChpUd28gTWVuIEFuZCBBIFRydWNrIEF1c3RpbiIDiAEBWhwiGnR3byBtZW4gYW5kIGEgdHJ1Y2sgYXVzdGlukgEObW92aW5nX2NvbXBhbnmaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUjJiblpYZGtsbkVBReABAPoBBAgAEEI!16s%2Fg%2F1wt3ntgn?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    },
+    {
+      "name": "Unicorn",
+      "label": "Unicorn · Austin",
+      "reviews": 1345,
+      "rating": 4.8,
+      "target": false,
+      "selected": false,
+      "url": "https://www.google.com/maps/place/Unicorn+Moving+%26+Storage+-+Austin+Movers/@30.3770798,-97.6820927,17z/data=!3m1!4b1!4m6!3m5!1s0x8644c9440055f0d9:0x8412d47dd9e76495!8m2!3d30.3770798!4d-97.6820927!16s%2Fg%2F1tkvb4k6?entry=ttu&g_ep=EgoyMDI2MTAxMS4wIKXMDSoASAFQAw%3D%3D"
+    }
+  ],
+  "observations": [
+    {
+      "id": "protection",
+      "title": "Make protection terms clear.",
+      "kind": "Public-copy inconsistency",
+      "scope": "2 pages",
+      "body": "Reviews mentions $10,000 coverage; the policy says up to $1,000. I’d confirm the actual terms with you and align the wording.",
+      "sourceIds": [
+        "coverage"
+      ],
+      "uniqueAffectedPages": 2
+    },
+    {
+      "id": "referral",
+      "title": "Use one referral percentage.",
+      "kind": "Public-copy inconsistency",
+      "scope": "1 page · 1 issue",
+      "body": "On the same page, the explanation uses 10% and the detailed terms use 5%. I’d confirm the correct rate and update that page.",
+      "sourceIds": [
+        "referral"
+      ],
+      "uniqueAffectedPages": 1
+    },
+    {
+      "id": "quote",
+      "title": "Make the quote step easier.",
+      "kind": "Observed + test",
+      "scope": "Homepage inspection",
+      "body": "The inspected email and phone fields lacked accessible names. I’d add clear labels, then test the quote journey for qualified inquiries.",
+      "sourceIds": [
+        "quote"
+      ],
+      "uniqueAffectedPages": 1
+    },
+    {
+      "id": "visibility",
+      "title": "Connect visibility to real leads.",
+      "kind": "Review together",
+      "scope": "Opportunity to validate",
+      "body": "I’d review profile links, crew and job proof, and inquiry attribution with you. Social account activity and lead impact need a closer look.",
+      "sourceIds": [
+        "home"
+      ],
+      "uniqueAffectedPages": null
+    }
+  ],
+  "references": [
+    {
+      "id": "coverage",
+      "label": "Protection wording",
+      "note": "Owner and appropriate professional review needed to establish actual terms; no legal coverage determination.",
+      "links": [
+        {
+          "url": "https://www.mountainmoversatx.com/reviews",
+          "label": "Reviews page"
+        },
+        {
+          "url": "https://www.mountainmoversatx.com/our-guarantee",
+          "label": "Guarantee policy"
+        }
+      ]
+    },
+    {
+      "id": "referral",
+      "label": "Offer wording",
+      "note": "One affected URL.",
+      "links": [
+        {
+          "url": "https://www.mountainmoversatx.com/referral-program",
+          "label": "Original page"
+        }
+      ]
+    },
+    {
+      "id": "quote",
+      "label": "Quote-field inspection",
+      "note": "Targeted homepage inspection; no conversion loss measured and no forms submitted.",
+      "links": [
+        {
+          "url": "https://www.mountainmoversatx.com/",
+          "label": "Homepage"
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "label": "Existing public presence",
+      "note": "Facebook and Instagram are linked in the official homepage’s business data. Public activity and lead impact remain unassessed.",
+      "links": [
+        {
+          "url": "https://www.mountainmoversatx.com/",
+          "label": "Public website"
+        },
+        {
+          "url": "https://www.mountainmoversatx.com/about",
+          "label": "Company / crew page"
+        },
+        {
+          "url": "https://www.mountainmoversatx.com/sitemap.xml",
+          "label": "Sitemap"
+        },
+        {
+          "url": "https://www.facebook.com/mountain.movers.atx/",
+          "label": "Website-linked Facebook"
+        },
+        {
+          "url": "https://www.instagram.com/mountainmoversatx/",
+          "label": "Website-linked Instagram"
+        }
+      ]
+    }
+  ]
+}

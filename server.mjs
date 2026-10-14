@@ -60,6 +60,8 @@ const server = http.createServer(async (req, res) => {
       `http://${req.headers.host || "localhost"}`,
     );
     const pathname = decodeURIComponent(url.pathname);
+    const isMmatx = /^\/mmatx\/?$/.test(pathname);
+    if (isMmatx) res.setHeader("X-Robots-Tag", "noindex, nofollow");
 
     if (pathname === "/api/health" && req.method === "GET") {
       json(res, 200, { ok: true, resendConfigured: Boolean(resendApiKey) });
@@ -209,8 +211,36 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    // An outdated tab can request a removed hashed asset after a deployment.
+    // Return an actual asset miss instead of HTML with a misleading 200 status.
+    if (pathname.startsWith("/assets/")) {
+      res.writeHead(404, {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-store",
+        "X-Content-Type-Options": "nosniff",
+      });
+      res.end("Asset not found");
+      return;
+    }
+
     // SPA fallback (React Router)
-    const body = await readFile(path.join(distDir, "index.html"));
+    let body = await readFile(path.join(distDir, "index.html"), "utf8");
+    // The unlisted presentation gets its own metadata before JavaScript runs.
+    // All other routes retain the site's original metadata.
+    if (isMmatx) {
+      const title = "Mountain Movers Austin | A few public observations | AI Baker";
+      const description = "A brief look at public reputation, a few practical website improvements, and a conversation about internal workflows. October 13, 2026 snapshot.";
+      body = body
+        .replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>\n<meta name="robots" content="noindex, nofollow" />`)
+        .replace(/(<meta\s+name="description"\s+content=")[^"]*("\s*\/>)/, `$1${description}$2`)
+        .replace(/(<link rel="canonical" href=")[^"]*("\s*\/>)/, "$1https://aibaker.io/mmatx$2")
+        .replace(/(<meta property="og:url" content=")[^"]*("\s*\/>)/, "$1https://aibaker.io/mmatx$2")
+        .replace(/(<meta property="og:title" content=")[^"]*("\s*\/>)/, `$1${title}$2`)
+        .replace(/(<meta\s+property="og:description"\s+content=")[^"]*("\s*\/>)/, `$1${description}$2`)
+        .replace(/(<meta name="twitter:title" content=")[^"]*("\s*\/>)/, `$1${title}$2`)
+        .replace(/(<meta\s+name="twitter:description"\s+content=")[^"]*("\s*\/>)/, `$1${description}$2`)
+        .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, "");
+    }
     res.writeHead(200, {
       "Content-Type": contentType[".html"],
       "Cache-Control": "no-cache",

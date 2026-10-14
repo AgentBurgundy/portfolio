@@ -1,7 +1,9 @@
 import mixpanel from 'mixpanel-browser'
 
 // Keep development visits and automated local checks out of production reports.
-const enabled = import.meta.env.PROD && ['aibaker.io', 'www.aibaker.io'].includes(window.location.hostname)
+const enabled = import.meta.env.PROD
+  && ['aibaker.io', 'www.aibaker.io'].includes(window.location.hostname)
+  && !/^\/mmatx\/?$/.test(window.location.pathname)
 
 export function initAnalytics() {
   if (!enabled) return
